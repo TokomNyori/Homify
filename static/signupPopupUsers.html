@@ -1,0 +1,78 @@
+<div class="signupBoxPartner shadow">
+    <div class="modals-header">
+        <i class="fas fa-times closeBtnUsers" id="closeBtnUsers"></i>
+    </div>
+    <hr>
+    <form action="/signupUsers" method="post" onsubmit="return user_signup()">
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" placeholder="First name" class="form-control" name="first_name" autocomplete="off"
+                    required />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" placeholder="Last name" class="form-control" name="last_name" autocomplete="off"
+                    required />
+            </div>
+        </div>
+        <div class="form-row row-gender ml-2">
+            <label for="validationCustom05" class="form-check-label genderLabel">Gender: &nbsp;</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
+                <label class="form-check-label genderRadio" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
+                <label class="form-check-label genderRadio" for="inlineRadio2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="others">
+                <label class="form-check-label genderRadio" for="inlineRadio3">Others</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <!--<i class="fas fa-flag-usa text-dark"></i> &nbsp; <span id="isdcode">+1</span>-->
+                            <select id="country" class="form-select" name="isd">
+                                <option selected value="+1">US +1</option>
+                                <option value="+91">IN +91</option>
+                            </select>
+                        </span>
+                    </div>
+                    <input type="tel" class="form-control" id="borderCustomSignup" placeholder="10 digit mobile number"
+                        aria-label="10 digit mobile number" aria-describedby="basic-addon1" pattern="[1-9]{1}[0-9]{9}"
+                        minlength="10" maxlength="10" name="mobile_number" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="email" placeholder="Email address" class="form-control" name="email" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="password" placeholder="Create password" class="form-control" id="signup_user_pw"
+                    name="password" autocomplete="off" minlength="8" required />
+            </div>
+        </div>
+        <div class="form-row last-input">
+            <div class="form-group">
+                <input type="password" placeholder="Confirm password" class="form-control" id="signup_user_con_pw"
+                    name="confirm_password" autocomplete="off" minlength="8" required />
+            </div>
+        </div>
+        <div class="warning_message" id="con_user_pw_validation"></div>
+        <div class="form-row buttonMargin">
+            <div class="form-group">
+                <button type="submit" class="form-control btn btn-primary" name="submit">
+                    Register
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

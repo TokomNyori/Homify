@@ -1,0 +1,154 @@
+/*Dropdowns*/
+select {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.searchCstm .dropdown-item,
+.searchCstm .navsearhbtn i {
+  color: rgba(3, 7, 30, 1) !important;
+}
+
+#navsearhbtn {
+  display: inline-block;
+}
+
+#searchCstm1,
+#searchCstm2 {
+  display: inline-block;
+}
+
+.searchCstm svg {
+  font-size: 0.5rem;
+}
+
+.searchCstm select {
+  font-size: 1.3em !important;
+}
+
+#searchCstm1,
+#searchCstm2 {
+  border-right: 0.2px solid rgba(52, 58, 64, 0.5);
+}
+
+#searchCstm1 {
+  padding-left: 0em;
+}
+
+/*Dropdown Ends*/
+.cont {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchCstm {
+  font-family: "Lato", sans-serif;
+  position: fixed;
+  top: 0.23em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+  padding: 0em 0.5em 0em 0.5em !important;
+  width: 3em;
+  height: 3em;
+  border-radius: 2em !important;
+  background: rgba(255, 255, 255, 1);
+  transition: 0.5s;
+  /* box-shadow: 0 0 0 5px #2573ef; */
+  overflow: hidden;
+  /* border: 0.3px solid rgba(52, 58, 64, 0.5); */
+  direction: rtl;
+  z-index: 101;
+  animation-name: customSearch;
+  animation-duration: 1s;
+}
+
+.searchCstm.expand {
+  width: 22em;
+}
+
+.searchCstm .iconCstm {
+  position: absolute;
+  border: none;
+  top: 0;
+  right: 0;
+  width: 3em;
+  height: 3em;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.searchCstm .inputCstm {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 3em;
+  right: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: ltr;
+}
+
+.clear {
+  position: relative;
+  cursor: pointer;
+  right: 0.3em;
+  /* padding-left: 0.8em; */
+}
+
+@keyframes customSearch {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .searchCstm {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .searchCstm .iconCstm {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .searchCstm .inputCstm {
+    height: 2.5em;
+    right: 0.8em;
+    bottom: 0.1em;
+  }
+
+  .searchCstm.expand {
+    width: 15.9em;
+  }
+
+  .searchCstm {
+    padding: 0em 0.4em 0em 0em !important;
+    top: 0.32rem !important;
+  }
+
+  .searchCstm select {
+    font-size: 0.8em !important;
+  }
+
+  .iconCstm #closeBTN {
+    font-size: 0.2em !important;
+  }
+}

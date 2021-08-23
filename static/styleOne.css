@@ -1,0 +1,208 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #dee2e6;
+  color: #03071e;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  background: white;
+}
+
+.dp-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bg-greyed {
+}
+
+.rounded {
+  border-radius: 0.5em !important;
+}
+
+.padding-md {
+  padding: 1em 1em;
+}
+
+.padding-lg {
+  padding: 2em 1em;
+}
+
+.padding-xl-wd {
+  padding: 2em 5em;
+}
+
+.padding-sm-width {
+  padding: 1em 4em;
+}
+
+.padding-lg-width {
+  padding: 1em 1em;
+}
+
+.margin-md {
+  margin: 2em 0;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.row {
+  margin: 0 0 1em 0 !important;
+}
+
+.logo-branding img {
+  text-align: center;
+  height: 3vh;
+  width: 3vh;
+}
+
+.branding {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 2em;
+}
+
+.branding-name {
+  margin: 0.2em 0.3em;
+}
+.description {
+  margin: 0 0.3em;
+  text-align: center;
+}
+
+.text-color-lt {
+  color: #495057;
+}
+
+.bg-light-orange {
+  background: rgba(249, 87, 56, 0.7);
+}
+
+.checkout-form .form-group,
+.checkout-form .payment-menthod {
+  margin: 0.5em auto !important;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.8em;
+  color: #495057;
+}
+
+.checkout-form .address-line {
+  margin: 0.2 auto !important;
+}
+
+#adress-line2 input {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#adress-line1 input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.checkout-form input,
+.checkout-form button {
+  border-radius: 0.5em;
+}
+
+.checkout-form input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.checkout-form button {
+  width: 100%;
+  margin: 1em auto !important;
+  height: 3em;
+}
+
+.width-50 {
+  width: 50%;
+  display: flex;
+}
+
+.font-size-sm {
+  font-size: 0.8em;
+}
+
+.fa-cc-visa {
+  color: #1a1f71;
+}
+
+.fa-laugh-squint {
+  color: #ffbe0b;
+}
+
+.fa-smile {
+  color: #ffbe0b;
+}
+
+.logos-card img {
+  max-width: 4.5vh;
+  max-height: 3.5vh;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.footer-pow {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  position: relative;
+  right: 25%;
+  bottom: 8em;
+}
+
+@media (max-width: 992px) {
+  .footer-pow {
+    right: 0;
+    bottom: 0;
+    top: 1.5em;
+  }
+
+  .padding-xl-wd {
+    padding: 2em 2em;
+  }
+}
+
+@media (max-width: 576px) {
+  .padding-sm-width {
+    padding: 1em 0;
+  }
+
+  .padding-lg {
+    padding: 2em 0;
+  }
+
+  .padding-xl-wd {
+    padding: 2em 0.5em;
+  }
+
+  .footer-pow {
+    right: 0;
+    bottom: 0;
+    top: 1.5em;
+  }
+}
+
+@media (max-width: 308px) {
+  .padding-sm-width {
+    padding: 1em 0;
+  }
+
+  .checkout-form input {
+    font-size: 0.9em;
+  }
+}

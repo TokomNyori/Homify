@@ -1,0 +1,239 @@
+.testiCon1 * {
+  box-sizing: border-box;
+  font-family: "Lato", cursive;
+}
+
+.testiCon1 {
+  display: flex;
+  padding: 0;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  padding-top: 0.5em;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  border-radius: 1em;
+  margin-bottom: 5em;
+}
+
+.swiper-container2 {
+  overflow: hidden;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.swiper-slide2 {
+  background-position: center;
+  background-size: cover;
+  border-radius: 1em;
+  min-width: 30vh;
+  max-width: 32vh;
+  margin: 0 0.3em;
+}
+
+.testimonials1 {
+  position: relative;
+  max-width: 100%;
+}
+
+/*Category Cards Start*/
+#categories {
+  font-weight: 500;
+  overflow: hidden;
+  width: 99.5%;
+  padding: 0.2em !important;
+  border-radius: 0.7em !important;
+  padding-right: 0em !important;
+  padding-left: 0em !important;
+  margin: 1em 0 !important;
+  text-align: center;
+  border: 0.1px solid rgba(52, 58, 64, 0.3);
+}
+
+#categories img {
+  width: 100%;
+  min-height: 26vh;
+  max-height: 26vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0em !important;
+}
+
+#categories .card-body {
+  padding: 1em 0.8em;
+}
+
+#categories .card-title{
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+#homes-route-form #no-border-button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor:pointer;
+  outline:none;
+}
+
+#categories .card-text {
+  font-size: 0.83em;
+  text-transform: capitalize;
+  padding: 0.3em 0em 0em 0em;
+  margin: 0;
+  text-align: left;
+}
+
+#categories .card-text-ratings {
+  font-size: 0.93em;
+  text-align: left;
+  text-transform: capitalize;
+  padding: 0.3rem 0em 0em 0em;
+  margin: 0;
+}
+
+
+#categories .card-body {
+  padding-top: 0.1em !important;
+}
+
+#categories .card-text {
+  max-height: 14vh;
+  margin-bottom: 0.16em !important;
+}
+
+#categories button {
+  background-color: rgba(52, 58, 64, 0.7);
+  color: rgba(255, 255, 255, 1);
+  font-size: 1em;
+  padding: 0 0.8em 0 0.8em;
+  margin-top: 0em !important;
+  transition: all 1s ease;
+}
+
+#categories button span {
+  margin: 0em;
+  padding: 0em;
+}
+
+/*#rowCustom{
+    border-radius: 0.7em !important;
+    padding: 0.2em 0.4em;
+  }*/
+
+/*Category Cards Ends*/
+.seeMore {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.seeMore p {
+  font-size: 1.1em;
+}
+
+.seeMore h3 span {
+  font-size: 0.6em;
+  font-weight: 400;
+  color: #fff;
+}
+
+.seeMore .warning {
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+}
+
+.margin-bottom {
+  margin-bottom: 1em;
+}
+
+.standard-padding {
+   padding: 1em;
+}
+
+.standard-border-radius {
+  border-radius: 1em;
+}
+
+@media (max-width: 768px) {
+  .seeMore h3 {
+    font-size: 1.4em;
+  }
+
+  .seeMore p {
+    font-size: 1em;
+  }
+
+  .seeMore h3 span {
+    font-size: 0.5em;
+  }
+
+  .seeMore .warning {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 576px) {
+  .headingExplore h1 {
+    font-size: 2em;
+  }
+
+  .seeMore h3 {
+    font-size: 1.2em;
+  }
+
+  .seeMore p {
+    font-size: 0.9em;
+  }
+
+  .seeMore h3 span {
+    font-size: 0.45em;
+  }
+
+  .seeMore .warning {
+    font-size: 0.8em;
+  }
+
+  #categories .card-title{
+    font-size: 0.83em;
+    text-transform: capitalize;
+  }
+
+  #categories .card-text {
+    font-size: 0.7em;
+    text-transform: capitalize;
+    padding: 0.3em 0em 0em 0em;
+    margin: 0;
+    text-align: left;
+  }
+
+  #categories .card-text-ratings {
+    font-size: 0.8em;
+    text-align: left;
+    text-transform: capitalize;
+    padding: 0.3rem 0em 0em 0em;
+    margin: 0;
+  }
+}
+
+@media (max-width: 338px) {
+  .seeMore h3 {
+    font-size: 1.15em;
+  }
+
+  .seeMore p {
+    font-size: 0.85em;
+  }
+
+  .seeMore h3 span {
+    font-size: 0.42em;
+  }
+
+  .seeMore .warning {
+    font-size: 0.75em;
+  }
+}

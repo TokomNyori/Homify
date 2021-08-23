@@ -1,0 +1,181 @@
+/*body*/
+.loginPartner {
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+/*Login Container*/
+.partnerLoginContainer {
+  margin: 10% auto;
+  text-align: center;
+  line-height: 1.34;
+}
+
+/*Login row*/
+.rowPartner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Branding START*/
+.logoPartnerWrap img {
+  background: rgba(3, 7, 30, 0.5);
+  border-radius: 0.8em;
+}
+
+/*Branding wrapper*/
+.logoPartnerWrap h2 {
+  margin-top: 0.5em;
+  color: rgba(3, 7, 30, 0.8);
+}
+
+/*Branding Logo*/
+#logoPartner {
+  max-width: 24vh;
+  max-height: 24vh;
+  position: relative;
+  transition: all 1s ease;
+}
+/*Branding END*/
+
+/*Login Box*/
+.loginBoxPartner {
+  padding: 1em;
+  background: #fff;
+  width: 75%;
+  border-radius: 0.5em;
+  margin: 0 auto;
+}
+
+/*Login form groups START*/
+.loginBoxPartner .form-group {
+  width: 96% !important;
+  margin: 0 auto;
+}
+
+.loginBoxPartner .form-row .form-control {
+  border-radius: 0.45rem;
+}
+
+.loginBoxPartner .form-group input,
+.loginBoxPartner .form-group button {
+  height: 3.34rem;
+}
+
+.loginBoxPartner .last-input {
+  margin-bottom: 1em;
+}
+/*Login form groups END*/
+
+/*Login button Margin*/
+.loginBoxPartner .buttonMargin button {
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: 0 16px 0 16px;
+}
+
+/*Form Row*/
+.loginBoxPartner .form-row {
+  margin-bottom: 0.8em;
+}
+
+/*CREATE ACCOUNT BUTTON*/
+.loginBoxPartner .buttonMarginOne button {
+  margin-top: 1.2rem;
+  background: #36a420;
+  color: #fff !important;
+  width: 60%;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0 16px 0 16px;
+}
+
+/*ANCHCHOR lOGIN*/
+.loginBoxPartner a {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+}
+
+.warning_message {
+  font-style: italic;
+  margin: 0 auto;
+  margin-bottom: 0.7rem;
+  color: red;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 1200px) {
+  .loginBoxPartner {
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .loginBoxPartner {
+    width: 70%;
+    max-width: 70%;
+  }
+
+  #logoPartner {
+    width: 20vh;
+    max-width: 20vh;
+  }
+
+  .logoPartnerWrap h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
+  }
+}
+
+@media (max-width: 576px) {
+  .loginBoxPartner {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  #logoPartner {
+    width: 20vh;
+    max-width: 20vh;
+  }
+
+  .logoPartnerWrap h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 448px) {
+  .loginBoxPartner {
+    width: 95%;
+    max-width: 95%;
+  }
+
+  .loginBoxPartner .form-group input {
+    font-size: 0.9em;
+  }
+
+  .loginBoxPartner .buttonMargin button {
+    font-size: 1em;
+  }
+
+  .loginBoxPartner .buttonMarginOne button {
+    font-size: 0.8em;
+    width: 65%;
+    max-width: 65%;
+  }
+
+  .loginBoxPartner a {
+    font-size: 0.8rem;
+  }
+
+  #logoPartner {
+    width: 14vh;
+    max-width: 14vh;
+  }
+  .logoPartnerWrap h2 {
+    font-size: 1.4em;
+  }
+}

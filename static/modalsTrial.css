@@ -1,0 +1,227 @@
+/*Branding END*/
+
+.modals {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 103;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  /*justify-content: center;
+      align-items: center;*/
+  overflow: auto;
+}
+
+.modals-header {
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 0;
+  margin: 0;
+}
+
+.modals-header i {
+  padding: 0;
+  margin: 0;
+}
+
+.fas {
+  color: coral;
+}
+
+.fa-times {
+  color: rgba(33, 37, 41, 0.6) !important;
+}
+
+.fa-times:hover {
+  color: rgba(33, 37, 41, 1) !important;
+}
+
+/*------------ ACTUAL START ------------------*/
+
+/*Login Box*/
+
+.signupBoxPartner {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  line-height: 1.34;
+  padding: 1em;
+  padding-top: 0.5em;
+  background: #fff;
+  width: 28%;
+  border-radius: 0.5em;
+  margin: 0 auto;
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+/*Login form groups START*/
+
+.signupBoxPartner .form-group {
+  width: 96% !important;
+  margin: 0 auto;
+}
+
+.signupBoxPartner .form-row .form-control {
+  border-radius: 0.45rem;
+}
+
+.signupBoxPartner #borderCustomSignup {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+}
+
+.signupBoxPartner .form-group input,
+.signupBoxPartner .form-group button {
+  height: 3rem;
+}
+
+.last-input {
+  margin-bottom: 50px;
+}
+
+/*Login form groups END*/
+
+/*Login button Margin*/
+
+.signupBoxPartner .buttonMargin button {
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: 0 16px 0 16px;
+}
+
+/*Form Row*/
+
+.form-row {
+  margin-bottom: 0.8em;
+}
+
+/*CREATE ACCOUNT BUTTON*/
+
+.signupBoxPartner .buttonMarginOne button {
+  margin-top: 0.5rem;
+  background: #36a420;
+  color: #fff !important;
+  width: 60%;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0 16px 0 16px;
+}
+
+/*ANCHCHOR lOGIN*/
+
+.signupBoxPartner a {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 1200px) {
+  .signupBoxPartner {
+    width: 38%;
+    max-width: 38%;
+  }
+}
+
+@media (max-width: 992px) {
+  .signupBoxPartner {
+    width: 48%;
+    max-width: 48%;
+  }
+  #logoPartner {
+    width: 20vh;
+    max-width: 20vh;
+  }
+  .logoPartnerWrap h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  .signupBoxPartner {
+    width: 58%;
+    max-width: 58%;
+  }
+}
+
+@media (max-width: 576px) {
+  .signupBoxPartner {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  #logoPartner {
+    width: 20vh;
+    max-width: 20vh;
+  }
+
+  .logoPartnerWrap h2 {
+    font-size: 1.5em;
+  }
+
+  .row-gender {
+    margin-left: 0.2em !important;
+  }
+
+  .genderLabel {
+    font-size: 0.95em;
+  }
+
+  .genderRadio {
+    font-size: 0.85em;
+  }
+
+  .signupBoxPartner .form-group input,
+  .signupBoxPartner .form-group button {
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 448px) {
+  .signupBoxPartner {
+    width: 92%;
+    max-width: 92%;
+  }
+  .signupBoxPartner .form-group input {
+    font-size: 0.9em;
+  }
+  .signupBoxPartner .buttonMargin button {
+    font-size: 1em;
+  }
+  .signupBoxPartner .buttonMarginOne button {
+    font-size: 0.8em;
+    width: 65%;
+    max-width: 65%;
+  }
+  .signupBoxPartner a {
+    font-size: 0.8rem;
+  }
+  #logoPartner {
+    width: 14vh;
+    max-width: 14vh;
+  }
+  .logoPartnerWrap h2 {
+    font-size: 1.4em;
+  }
+  .modals-header {
+    font-size: 1.2rem;
+  }
+  .fa-flag-usa,
+  #isdcode {
+    font-size: 0.9em;
+  }
+}

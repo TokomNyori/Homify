@@ -1,0 +1,140 @@
+.testiCon * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", cursive;
+}
+
+.testiCon {
+  display: flex;
+  padding: 0;
+  padding: 0.8em 0.5em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+  margin-bottom: 2em;
+}
+
+.testimonials {
+  position: relative;
+  max-width: 100%;
+}
+
+.swiper-container1 {
+  overflow: hidden;
+  /*-webkit-box-reflect: below 1px linear-gradient(transparent 70%, #0009);*/
+}
+
+.swiper-slide1 {
+  background-position: center;
+  background-size: cover;
+  width: 16em;
+  margin: 0 0.3em;
+  border-radius: 1em;
+}
+
+.swiper-container-3d .swiper-slide-shadow-left,
+.swiper-container-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+.testimonials .card {
+  border-radius: 1em;
+  position: relative;
+  width: 100%;
+  margin: 0 0.3em;
+  background: #333;
+  padding: 2em 1.2em;
+  text-align: center;
+  overflow: hidden;
+}
+
+.testimonials .card .layer {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#03a9f4, #e91ee3);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.testimonials .card:hover .layer {
+  top: 0;
+}
+
+.testimonials .card .content {
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials .card .content p {
+  font-size: 1.1em;
+  line-height: 24px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-style: italic;
+  text-align: left;
+  font-family: "Caveat", cursive;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonials .card .content .imgBx {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3.5px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0 0.2);
+}
+
+.testimonials .card .content h2 {
+  font-size: 1em;
+  color: #fff;
+}
+
+.testimonials .card .content h2 span {
+  color: #03a9f4;
+  font-size: 0.9em;
+  transition: 0.5s;
+}
+
+.testimonials .card:hover .content h2 span {
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .swiper-slide1 {
+    width: 15em;
+    margin: 0 0.1em;
+  }
+
+  .testimonials .card {
+    text-align: left;
+    padding: 1.5em 1.5em;
+  }
+
+  .testimonials .card .content p {
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  .testimonials .card .content h2 {
+    font-size: 0.8em;
+  }
+
+  .testimonials .card .content h2 {
+    text-align: center;
+  }
+
+  .testimonials .card .content .imgBx {
+    width: 4em;
+    height: 4em;
+    border: 2.5px solid #fff;
+  }
+}
