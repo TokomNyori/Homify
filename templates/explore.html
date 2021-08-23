@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Explore
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid hero identifyObserver d-flex align-items-end justify-content-center mb-4 shadow-lg">
+    <div class="text-center" id="herotext">
+        <h1 class="display-4 mt-0 mb-0" id="heroh1">{{city | upper}}</h1>
+    </div>
+</div>
+<div class="container mb-2 mt-1">
+    <h1 class="street_heading mb-3">{{streets[0]['street'] | upper}}</h1>
+    <div class="row slider justify-content-center" id="cards" method="post">
+        {%for d in street1%}
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="inner">
+                    <img src="static/images/{{d.image}}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{d.name | upper}}</h6>
+                    <p class="mt-0 mb-0"><span class="badge badge-secondary">{{4.5}} <i class="fas fa-star"></i></span>
+                    </p>
+                    <p class="card-text mt-0">{{d.street}}, {{d.city}}, {{d.state}}, {{d.country}}.</p>
+                    <form action="/homes" method="post" target="_blank">
+                        <input type="hidden" name="name" value="{{d.name}}">
+                        <button class="btn btn-secondary" target="_blank">View Details</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<div class="container mb-2 mt-3">
+    <h1 class="street_heading mb-3">{{streets[1]['street'] | upper}}</h1>
+    <div class="row slider justify-content-center" id="cards" method="post">
+        {%for d in street2%}
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="inner">
+                    <img src="static/images/{{d.image}}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{d.name | upper}}</h6>
+                    <p class="mt-0 mb-0"><span class="badge badge-secondary">{{4.5}} <i class="fas fa-star"></i></span>
+                    </p>
+                    <p class="card-text mt-0">{{d.street}}, {{d.city}}, {{d.state}}, {{d.country}}.</p>
+                    <form action="/homes" method="post" target="_blank">
+                        <input type="hidden" name="name" value="{{d.name}}">
+                        <button class="btn btn-secondary" target="_blank">View Details</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<div class="container mb-4 mt-3">
+    <h1 class="street_heading mb-3">{{streets[2]['street'] | upper}}</h1>
+    <div class="row slider justify-content-center" id="cards" method="post">
+        {%for d in street3%}
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="inner">
+                    <img src="static/images/{{d.image}}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{d.name | upper}}</h6>
+                    <p class="mt-0 mb-0"><span class="badge badge-secondary">{{4.5}} <i class="fas fa-star"></i></span>
+                    </p>
+                    <p class="card-text mt-0">{{d.street}}, {{d.city}}, {{d.state}}, {{d.country}}.</p>
+                    <form action="/homes" method="post">
+                        <input type="hidden" name="name" value="{{d.name}}">
+                        <button class="btn btn-secondary" target="_blank">View Details</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<div class="container m-y-4">
+    <div class="bannerOffer text-center">
+        <p>Get exclusive deals if you sign up now! &nbsp; <i class="fas fa-home"></i> Homify, the America's Fastest
+            Growing Rental Home Chain.
+            <span class="offer mt-0">Sign up now and get 10% more discount
+        </p>
+        </p>
+    </div>
+</div>
+<script>
+    var changeBG = document.querySelector(".hero");
+    changeBG.style.backgroundImage = "url('static/images/locations_lg/{{cityImg}}')";
+</script>
+{% endblock %}

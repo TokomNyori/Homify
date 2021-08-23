@@ -1,0 +1,79 @@
+{% extends "layoutOne.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<div class="container checkout-form shadow rounded padding-xl-wd">
+    <h5 class="payment-menthod" style="padding-left: 0.4em;">User details <span
+            style="font-size: 0.9rem">&nbsp;(Mandatory
+            Process)</span>
+    </h5>
+    <p class="payment-menthod text-danger" style="padding-left: 0.5em; font-size: 0.9em;">*Property owner's right to
+        have
+        information</p>
+    <form action="/payment_page" method="post" class="row" enctype="multipart/form-data">
+        <div class="col-md-6 col-12 form-group">
+            <label for="selfie" class="form-label">Your photo <i class="fas fa-portrait"></i></label>
+            <input type="file" class="form-control" id="selfie" name="selfie" required>
+        </div>
+        <div class="col-md-6 col-12 form-group">
+            <label for="doc" class="form-label">Govt. registred document&nbsp; (upload anything <i
+                    class="fas fa-laugh-squint"></i>)</label>
+            <input type="file" class="form-control" id="doc" name="doc" required>
+        </div>
+        <div class="col-6 form-group">
+            <label for="occupation" class="form-label">Occupation</label>
+            <input type="tel" class="form-control shadow-sm" id="occupation" name="occupation"
+                aria-describedby="card_exp" placeholder="Programmer" required>
+        </div>
+        <div class="col-6 form-group">
+            <label for="status" class="form-label">Staus</label>
+            <select id="status" class="form-select shadow-sm rounded" aria-label="Default select example" name="status">
+                <option selected disabled>Select</option>
+                <option value="family">Family</option>
+                <option value="bachelor">Bachelor</option>
+                <option value="student">Student</option>
+            </select>
+        </div>
+        <div class="col-12 form-group">
+            <label for="country" class="form-label">Permanent address</label>
+            <select id="country" class="form-select shadow-sm rounded" aria-label="Default select example"
+                name="country">
+                <option selected disabled>Country</option>
+                {% for i in countries.values() %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-12 address-line" id=adress-line1>
+            <input type="text" class="form-control shadow-sm" id="address_line_1" aria-describedby="emailHelp"
+                placeholder="Address line 1" name="address_line_1">
+        </div>
+        <div class="col-12 address-line" id=adress-line2>
+            <input type="text" class="form-control shadow-sm" id="address_line_2" name="address_line_2"
+                aria-describedby="address_lines" placeholder="Address line 2 (optional)">
+        </div>
+        <!--city-->
+        <div class="col-6 form-group">
+            <input type="tel" class="form-control shadow-sm" id="city" aria-describedby="city" placeholder="City"
+                name="city">
+        </div>
+        <div class="col-6 form-group">
+            <input type="tel" class="form-control shadow-sm" id="state" aria-describedby="state" placeholder="State"
+                name="state">
+        </div>
+        <input type="hidden" value="{{sessionID}}" name="session_id">
+        <input type="hidden" value="{{h_id}}" name="h_id">
+        <input type="hidden" value="{{h_name}}" name="h_name">
+        <input type="hidden" value="{{h_type}}" name="h_type">
+        <input type="hidden" value="{{price | int}}" name="price">
+        <input type="hidden" value="{{mode}}" name="mode">
+        <input type="hidden" value={{surveyDate}} name="surveyDate">
+        <div class="col-12 form-group">
+            <button type="submit" class="btn btn-primary">Proceed</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

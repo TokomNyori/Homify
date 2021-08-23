@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Success
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid hero d-flex align-items-center justify-content-center shadow-lg">  <!--id="herotext"-->
+      <div class="text-center hero-text align-self-end" id="fluidy">
+        <div id="navbrand1" class="navbar-brand identify1Observer" href="/"><img id="logo_main1" class="mr-0" src="static/images/logo/homify5.png">
+          </div>
+        <!--<h1 class="display-4 mt-0 mb-0" id="heroh1">"Best journey always takes us home"</h1>-->
+        <div class="container searchbarContainer identifyObserver mb-3">
+        <div class="searchbar shadow sticky" id="searchbarId">
+        <form action="/results" method="post" target="_blank">
+          <section id="search1">
+            <div class="dropdown">
+              <select class="btn" aria-expanded="false" name="city" required>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>City/Town</option>
+                  <option class="dropdown-item" value="san jose">San Jose</option>
+                  <option class="dropdown-item" value="new york">New york</option>
+                  <option class="dropdown-item" value="miami">Miami</option>
+                  <option class="dropdown-item" value="houston">Houston</option>
+                  <option class="dropdown-item" value="san francisco">San Francisco</option>
+                </div>
+              </select>
+            </div>
+          </section>
+          <section id="search2">
+            <div class="dropdown">
+              <select class="btn" aria-expanded="false" name="type" required>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>Home type</option>
+                  <option class="dropdown-item" value="one_bhk">1 BHK</option>
+                  <option class="dropdown-item" value="two_bhk">2 BHK</option>
+                  <option class="dropdown-item" value="three_bhk">3 BHK</option>
+                  <option class="dropdown-item" value="four_bhk">4 BHK</option>
+                  <option class="dropdown-item" value="four_plus_bhk">4+ BHK</option>
+                </div>
+              </select>
+            </div>
+          </section>
+          <section id="navsearhbtn">
+            <button class="btn" type="submit" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
+            </button>
+          </section>
+        </form>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="container shadow px-4 py-4 rounded mb-5">
+        <h2 style="color: green;">Results</h2>
+        <!--
+        <h4>Building Name: {{building_name}}</h4>
+        <h4>building name dashes: {{building_name_dashes}}</h4>
+        <h4>City: {{city}}</h4>
+        <h4>state: {{state}}</h4>
+        <h4>country: {{country}}</h4>
+        <h4>zip_code: {{zip_code}}</h4>
+        <h4>locality: {{locality}}</h4>
+        <h4>landmark: {{landmark}}</h4>
+        <h4>neighbourhood: {{neighbourhood}}</h4>
+        <h4>BHK Type: {{bhkTypes}}</h4>
+        <h4>bhkTypes_check: {{bhkTypes_check}}</h4>
+        <h4>homify categories: {{homify_categories}}</h4>
+        <h4>homify_categories_check: {{homify_categories_check}}</h4>
+        <h4>total_nos: {{total_nos}}</h4>
+        <h4>Pricing BHK: {{pricingBHK}}</h4>
+
+        <h3>What's nearby?</h3>
+        <h4>Malls: {{malls}}</h4>
+        <h4>Hospitals: {{hospitals}}</h4>
+        <h4>parks: {{parks}}</h4>
+        <h4>Schools: {{schools}}</h4>
+        <h4>colleges: {{colleges}}</h4>
+        <h4>universities: {{universities}}</h4>
+        <h4>pharmacies: {{pharmacies}}</h4>
+        <h4>vegetable_shops: {{vegetable_shops}}</h4>
+        <h4>transportations: {{transportations}}</h4>
+
+        <h3>Features-</h3>
+        <h4>parking: {{parking}}</h4>
+        <h4>balcony: {{balcony}}</h4>
+        <h4>geyser: {{geyser}}</h4>
+        <h4>refrigerator: {{refrigerator}}</h4>
+        <h4>security_guards: {{security_guards}}</h4>
+        <h4>security_cameras: {{security_cameras}}</h4>
+        <h4>attached_bathrooms: {{attached_bathrooms}}</h4>
+        <h4>general_bathroom: {{general_bathroom}}</h4>
+
+        <!--
+        {%for i in imgs%}
+          <div>
+            <img src="static/images/partners/{{i.facade_large_image}}">
+          </div>
+        {%endfor%}
+        <br>
+        {%for i in imgs%}
+          <div>
+            <img src="static/images/partners/{{i.facade_small_image}}">
+          </div>
+        {%endfor%}
+
+        <br>
+        <h3>Interiors</h3>
+        {%for i in inti%}
+          <div>
+            <img src="static/images/partners/{{i.interior_images}}">
+          </div>
+        {%endfor%}
+        -->
+    </div>
+</body>
+{% endblock %}

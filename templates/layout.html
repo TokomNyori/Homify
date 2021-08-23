@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat:wght@400;500;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300;1,400;1,500;1,700&family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!--
+    NOTE:
+    CSS rules to specify families-
+
+    font-family: 'Amatic SC', cursive;
+    font-family: 'Caveat', cursive;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    -->
+
+    <!--Swiper JS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--Locals-->
+    <link rel="stylesheet" href="static/testimonials.css" />
+    <link rel="stylesheet" href="static/categories.css" />
+    <link rel="stylesheet" href="/static/expandableSearch.css" />
+    <link rel="stylesheet" href="static/modalsTrial.css" />
+    <link rel="stylesheet" href="loginPartner.css" />
+    <link rel="shortcut icon" href="static/images/logo/faviconIcon.png" type="static/images/logo/png" />
+    <link rel="stylesheet" href="static/user_profile.css">
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header id="header">
+        {% if titlee.n == 'index' %}
+        {% if session.user_id %}
+        <nav class="navbar navbar-expand-md fixed-top" id="nav">
+            <div class="container-fluid custom-toggler">
+                <a class="navbar-brand" href="/"><img id="logo_main" class="mr-0"
+                        src="static/images/logo/homify_logo.png" /></a>
+                <button id="navColBtn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span id="navToggler" class="navbar-toggler-icon"><i id="hamIcon" class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" id="navColps0" href="/"><i class="fas fa-home"></i>
+                            <span class="hideLists0">Home</span></a>
+                        <div class="nav_link_description_hover shadow">Home</div>
+                        <a class="nav-link" id="navColps1" href="/partner_dashboard" target="_blank"><i
+                                class="fas fa-handshake"></i>
+                            <span class="hideLists1">List your property?</span></a>
+                        <div class="nav_link_description_hover shadow">
+                            List your property?
+                        </div>
+                        <!--   <button class="credentialUser nav-link" id="navColps2"><i class="fas fa-user-circle"></i> <span
+                                        class="hideLists2">Log in / Sign up</span></button> -->
+                        <div class="btn-group dropstart nav-link" id="navColps2">
+                            <button type="button" class="btn btn dropdown-toggle user_nav_profileBtn"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="userProfileNav"><i class="fas fa-user-circle"></i> &nbsp;
+                                    {{user_details[0].first_name}}</span>
+                            </button>
+                            <ul class="dropdown-menu shadow" id="userProLi">
+                                <li><a class="dropdown-item" href="/user_profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/logOut_User">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <audio src="static/audio/popupnew.mp3" id="popup_audio"></audio>
+                        <audio src="static/audio/popoutmini.mp3" id="popup_audio2"></audio>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% else %}
+        <nav class="navbar navbar-expand-md fixed-top" id="nav">
+            <div class="container-fluid custom-toggler">
+                <a class="navbar-brand" href="/"><img id="logo_main" class="mr-0"
+                        src="static/images/logo/homify_logo.png" /></a>
+                <button id="navColBtn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span id="navToggler" class="navbar-toggler-icon"><i id="hamIcon" class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" id="navColps0" href="/"><i class="fas fa-home"></i>
+                            <span class="hideLists0">Home</span></a>
+                        <div class="nav_link_description_hover shadow">Home</div>
+                        <a class="nav-link" id="navColps1" href="/partner_dashboard" target="_blank"><i
+                                class="fas fa-handshake"></i>
+                            <span class="hideLists1">List your property?</span></a>
+                        <div class="nav_link_description_hover shadow">
+                            List your property?
+                        </div>
+                        <button class="credentialUser nav-link" id="navColps2">
+                            <i class="fas fa-user-circle"></i>
+                            <span class="hideLists2">Log in / Sign up</span>
+                        </button>
+                        <div class="nav_link_description_hover shadow">Log in / Signup</div>
+                        <audio src="static/audio/popupnew.mp3" id="popup_audio"></audio>
+                        <audio src="static/audio/popoutmini.mp3" id="popup_audio2"></audio>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% endif %}
+        {% elif session.user_id %}
+        <nav class="navbar navbar-expand-md fixed-top" id="nav">
+            <div class="container-fluid custom-toggler">
+                <a class="navbar-brand" href="/"><img id="logo_main" class="mr-0"
+                        src="static/images/logo/homify_logo.png" /></a>
+                <button id="navColBtn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span id="navToggler" class="navbar-toggler-icon"><i id="hamIcon" class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav" id="for_profile_bg">
+                        <a class="nav-link" id="navColps0" href="/"><i class="fas fa-home"></i>
+                            <span class="hideLists0">Home</span></a>
+                        <div class="nav_link_description_hover shadow">Home</div>
+                        <a class="nav-link" id="navColps1" href="/partner_dashboard" target="_blank"><i
+                                class="fas fa-handshake"></i>
+                            <span class="hideLists1">List your property?</span></a>
+                        <div class="nav_link_description_hover shadow">
+                            List your property?
+                        </div>
+                        <div class="btn-group dropstart nav-link" id="navColps2">
+                            <button type="button" class="btn btn dropdown-toggle user_nav_profileBtn"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="userProfileNav"><i class="fas fa-user-circle"></i> &nbsp;
+                                    {{user_details[0].first_name}}</span>
+                            </button>
+                            <ul class="dropdown-menu shadow" id="userProLi">
+                                <li><a class="dropdown-item" href="/user_profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/logOut_User">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <audio src="static/audio/popupnew.mp3" id="popup_audio"></audio>
+                        <audio src="static/audio/popoutmini.mp3" id="popup_audio2"></audio>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% else %}
+        <nav class="navbar navbar-expand-md fixed-top" id="nav">
+            <div class="container-fluid custom-toggler">
+                <a class="navbar-brand" href="/"><img id="logo_main" class="mr-0"
+                        src="static/images/logo/homify_logo.png" /></a>
+                <button id="navColBtn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span id="navToggler" class="navbar-toggler-icon"><i id="hamIcon" class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" id="navColps0" href="/"><i class="fas fa-home"></i>
+                            <span class="hideLists0">Home</span></a>
+                        <div class="nav_link_description_hover shadow">Home</div>
+                        <a class="nav-link" id="navColps1" href="/partner_dashboard" target="_blank"><i
+                                class="fas fa-handshake"></i>
+                            <span class="hideLists1">List your property?</span></a>
+                        <div class="nav_link_description_hover shadow">
+                            List your property?
+                        </div>
+                        <button class="nav-link credentialUser" id="navColps2">
+                            <i class="fas fa-user-circle"></i>
+                            <span class="hideLists2">Log in / Sign up</span>
+                        </button>
+                        <div class="nav_link_description_hover shadow">Log in / Signup</div>
+                        <audio src="static/audio/popupnew.mp3" id="popup_audio"></audio>
+                        <audio src="static/audio/popoutmini.mp3" id="popup_audio2"></audio>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% endif %}
+    </header>
+    <main class="bg-bg">
+        {% block main %}{% endblock %} {% if titlee.n == 'index' %}
+        <div class="cont">
+            <div class="searchCstm shadow">
+                <form action="/results" method="post" target="_blank">
+                    <div class="inputCstm" id="mysearch">
+                        <!-- <input type="text" placeholder="Search" id="mysearch"> -->
+                        <span class="clear" onclick="document.getElementById('mysearch').value ='' ">
+                            <i id="customSearchClose" class="far fa-times-circle"></i>
+                        </span>
+                        <section id="searchCstm1">
+                            <div class="dropdown">
+                                <select id="cstmSelect1" class="btn" aria-expanded="false" name="city" required>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>
+                                            City/Town
+                                        </option>
+                                        <option class="dropdown-item" value="san jose">
+                                            San Jose
+                                        </option>
+                                        <option class="dropdown-item" value="new york">
+                                            New york
+                                        </option>
+                                        <option class="dropdown-item" value="miami">Miami</option>
+                                        <option class="dropdown-item" value="houston">
+                                            Houston
+                                        </option>
+                                        <option class="dropdown-item" value="san francisco">
+                                            San Francisco
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                        </section>
+                        <section id="searchCstm2">
+                            <div class="dropdown">
+                                <select id="cstmSelect2" class="btn" aria-expanded="false" name="type" required>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>
+                                            Home type
+                                        </option>
+                                        <option class="dropdown-item" value="one_bhk">
+                                            1 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="two_bhk">
+                                            2 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="three_bhk">
+                                            3 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="four_bhk">
+                                            4 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="four_plus_bhk">
+                                            4+ BHK
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                        </section>
+                    </div>
+                    <button class="iconCstm">
+                        <svg id="closeBTN" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="cont1">
+            <div class="searchCstm shadow">
+                <form action="/results" method="post" target="_blank">
+                    <div class="inputCstm" id="mysearch">
+                        <!-- <input type="text" placeholder="Search" id="mysearch"> -->
+                        <span class="clear" onclick="document.getElementById('mysearch').value ='' ">
+                            <i id="customSearchClose" class="far fa-times-circle"></i>
+                        </span>
+                        <section id="searchCstm1">
+                            <div class="dropdown">
+                                <select id="cstmSelect1" class="btn" aria-expanded="false" name="city" required>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>
+                                            City/Town
+                                        </option>
+                                        <option class="dropdown-item" value="san jose">
+                                            San Jose
+                                        </option>
+                                        <option class="dropdown-item" value="new york">
+                                            New york
+                                        </option>
+                                        <option class="dropdown-item" value="miami">Miami</option>
+                                        <option class="dropdown-item" value="houston">
+                                            Houston
+                                        </option>
+                                        <option class="dropdown-item" value="san francisco">
+                                            San Francisco
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                        </section>
+                        <section id="searchCstm2">
+                            <div class="dropdown">
+                                <select id="cstmSelect2" class="btn" aria-expanded="false" name="type" required>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <option id="searchfirstOpt" class="dropdown-item" value="" disabled selected>
+                                            Home type
+                                        </option>
+                                        <option class="dropdown-item" value="one_BHK">
+                                            1 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="two_BHK">
+                                            2 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="three_BHK">
+                                            3 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="four_BHK">
+                                            4 BHK
+                                        </option>
+                                        <option class="dropdown-item" value="four_plus_BHK">
+                                            4+ BHK
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                        </section>
+                    </div>
+                    <button class="iconCstm">
+                        <svg id="closeBTN" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        <div class="modals" id="modals_users">
+            <div class="signupBoxPartner shadow">
+                <div class="modals-header">
+                    <i class="fas fa-times" id="closeBtnUsers"></i>
+                </div>
+                <hr />
+                <form id="userLoginForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Email id or phone number" class="form-control" id="user_id"
+                                name="partner_id" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div class="form-row last-input">
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control" id="login_pw"
+                                name="passwordPartner" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div class="warning_message" id="pw_validation"></div>
+                    <div class="form-row buttonMargin">
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary" autocomplete="off"
+                                id="partnerLogin">
+                                Log In
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <a style="text-align: center" href="#">Forgotten Password?</a>
+                    </div>
+                    <hr />
+                </form>
+                <div class="form-row buttonMarginOne">
+                    <div class="form-group">
+                        <button type="password" placeholder="Password" class="form-control btn text-white"
+                            id="modal-signup-users" name="passwordPartner" autocomplete="off">
+                            Create New Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spinner0">
+            <div class="spinnersBox">
+                <div id="spinner" class="spinner-border text-dark" style="width: 3rem; height: 3rem" role="status">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-2 mt-1">
+        <div class="container">
+            <p>
+                Homify<sup><i class="far fa-copyright text-white"></i></sup>
+            </p>
+            <div class="row justify-content-around">
+                <a class="footer_a col-sm-4" href="#">About this project</a>
+                <a class="footer_a col-sm-4" href="#">About me</a>
+                <a class="footer_a col-sm-4" href="#">Contact me</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <!--Bootstrap 4-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/939c2f26e1.js" crossorigin="anonymous"></script>
+
+    <!--SwiperJS-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!--Locals-->
+    <script src="static/main.js"></script>
+    <script src="static/intersect.js"></script>
+    <script src="static/intersect2.js"></script>
+    <script src="static/intersect3.js"></script>
+    <script src="static/modals_users.js"></script>
+    <script src="static/card0.js"></script>
+    <script src="static/testimonials.js"></script>
+    <script src="static/categories.js"></script>
+    <script src="static/expandableSearch.js"></script>
+    <script src="static/card1.js"></script>
+    <script>
+        function user_signup() {
+            var signup_pw = document.querySelector("#signup_user_pw").value;
+            var signup_con_pw = document.querySelector("#signup_user_con_pw").value;
+            var con_pw_validation = document.querySelector(
+                "#con_user_pw_validation"
+            );
+
+            if (signup_pw != signup_con_pw) {
+                con_pw_validation.innerHTML = "*Password mismatch";
+                return false;
+            }
+        }
+    </script>
+    <script>
+        var partnerLogin = document.querySelector("#userLoginForm");
+
+        partnerLogin.addEventListener("submit", (e) => {
+            var user_id = document.querySelector("#user_id").value;
+            var login_pw = document.querySelector("#login_pw").value;
+            var pw_validation = document.querySelector("#pw_validation");
+            //var action = '';
+            e.preventDefault();
+
+            $.post(
+                "/loginUser",
+                {
+                    u_pw: login_pw,
+                    u_id: user_id,
+                },
+
+                function (message) {
+                    if (message == "correct") {
+                        window.location.replace("/");
+                    } else {
+                        pw_validation.innerHTML = message;
+                    }
+                }
+            );
+            //e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

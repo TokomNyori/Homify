@@ -1,0 +1,187 @@
+{% extends "layoutOne.html" %}
+
+{% block title %}
+Payment
+{% endblock %}
+
+{% block main %}
+<div class="container shadow rounded padding-lg">
+    <div class="row dp-flex">
+        <div class="col-md-6 col-12 ps-left">
+            <div class="branding">
+                <span class="logo-branding"><img src="static\images\mix\homifyMainLogo.png" alt=""></span>
+                <span class="branding-name">Homify &nbsp; <span class="badge bg-light-orange text-color-lt">TEST
+                        MODE</span></span>
+            </div>
+            {% if mode %}
+            <div class="description">
+                <p class="text-color-lt m-0">Product: Rental Home</p>
+                <p class="text-color-lt">Type: {{h_type}}</p>
+                {% set total = price%}
+                <h4 class="">
+                    ${{total}}
+                </h4>
+                <p class="text-color-lt">Safe and cozy homes by Homify</p>
+            </div>
+
+            {% else %}
+            <div class="description">
+                <p class="text-color-lt m-0">Product: Rental Home</p>
+                <p class="text-color-lt">Type: {{h_type}}</p>
+                {% set coupon = (price / 10) * 1%}
+                {% set total = price - coupon %}
+                <h4 class="">
+                    <span style="text-decoration-line: line-through;">${{price}}</span>&nbsp; ${{total}}
+                    <span class="badge bg-danger text-white" style="font-size: 0.6rem;">10% extra
+                        discount</span>
+                </h4>
+                <p class="text-color-lt">Safe and cozy homes by Homify</p>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="checkout-form padding-sm-width rounded shadow">
+                <h5 class="payment-menthod" style="padding-left: 0.4em;">Pay with card</h5>
+                <form action="/payment" method="post" class="row">
+                    <div class="col-12 form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control shadow-sm" id="email" aria-describedby="emailHelp"
+                            name="email" required>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="card_num" class="form-label">Card number</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control creditCardText shadow-sm" id="card_num"
+                                aria-describedby="card_name" placeholder="1234 1234 1234 1234" maxlength="19"
+                                minlength="19" name="card_num" required>
+                            <span class="input-group-text logos-card shadow-sm"
+                                style="background: white; font-size: 1.2em; padding: 0 0.1em 0 0.3em;"
+                                id="basic-addon1">
+                                <i class="fab fa-cc-visa"></i>
+                                <img src="static\images\mix\mc_vrt_opt_pos_46_3x.png" alt=""></span>
+                        </div>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="card_exp" class="form-label">Expiration</label>
+                        <input type="tel" class="form-control shadow-sm" id="card_exp" name="card_exp"
+                            aria-describedby="card_exp" placeholder="06/24" maxlength="5" minlength="5" required>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="cvc" class="form-label">CVC</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control shadow-sm" id="cvc" placeholder="321" name="cvc"
+                                minlength="3" maxlength="3" required>
+                            <span class="input-group-text shadow-sm" style="background: white; font-size: 1.1em;"
+                                id="basic-addon1"><i class="fas fa-credit-card"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="card_name" class="form-label">Name on card</label>
+                        <input type="text" class="form-control shadow-sm" id="card_name" aria-describedby="cardName"
+                            name="card_name" required>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="billing_address" class="form-label">Billing address</label>
+                        <select class="form-select shadow-sm rounded" aria-label="Default select example"
+                            name="country">
+                            <option selected disabled>Country</option>
+                            {% for i in countries.values() %}
+                            <option value="{{i}}">{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 address-line" id=adress-line1>
+                        <input type="text" class="form-control shadow-sm" id="address_line_1"
+                            aria-describedby="emailHelp" placeholder="Address line 1" name="address_line_1">
+                    </div>
+                    <div class="col-12 address-line" id=adress-line2>
+                        <input type="text" class="form-control shadow-sm" id="address_line_2" name="address_line_2"
+                            aria-describedby="address_lines" placeholder="Address line 2 (optional)">
+                    </div>
+                    <!--city-->
+                    <div class="col-6 form-group">
+                        <input type="tel" class="form-control shadow-sm" id="city" aria-describedby="city"
+                            placeholder="City" name="city">
+                    </div>
+                    <div class="col-6 form-group">
+                        <input type="tel" class="form-control shadow-sm" id="state" aria-describedby="state"
+                            placeholder="State" name="state">
+                    </div>
+                    <input type="hidden" name="h_id" value="{{h_id}}">
+                    <input type="hidden" name="h_type" value="{{h_type}}">
+                    <input type="hidden" name="price" value={{total}}>
+                    <input type="hidden" name="h_name" value={{h_name}}>
+                    <input type="hidden" name="sl_no" value={{sl_no}}>
+                    <input type="hidden" name="mode" value={{mode}}>
+                    <div class="col-12 form-group">
+                        <button type="submit" class="btn btn-primary">Pay ${{total}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer-powered class="footer-pow text-color-lt text-centered">
+            <span class="font-size-sm">Powered by</span> <span style="font-weight: 700;">Homify</span>
+        </footer-powered>
+    </div>
+</div>
+<!--jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+
+    $('#card_num').keyup(function () {
+        var foo = $(this).val().split(" ").join(""); // remove hyphens
+        if (foo.length > 0) {
+            foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");
+        }
+        $(this).val(foo);
+    });
+
+
+
+    $('#card_exp').keyup(function () {
+        var foo = $(this).val().split("/").join(""); // remove hyphens
+        if (foo.length > 0) {
+            foo = foo.match(new RegExp('.{1,2}', 'g')).join("/");
+        }
+        $(this).val(foo);
+    });
+
+
+
+    //MY VERSIONS
+    /*
+    $('.creditCardText').keyup(function () {
+        var foo = $(this).val(); // remove hyphens
+        var faaz = foo.split(" ").join(""); // remove hyphens;
+        if (faaz.length > 0 && faaz.length < 16 && faaz.length % 4 == 0) {
+            foo = foo + ' ';
+        }
+        $(this).val(foo);
+    });
+
+    $('#card_exp').keyup(function () {
+        var foo = $(this).val()
+
+        if (foo.length == 2) {
+            foo = foo + '/';
+        }
+        $(this).val(foo);
+    });
+    */
+</script>
+<!--
+<script>
+    function payment() {
+        var signup_pw = document.querySelector('#signup_pw').value;
+        var signup_con_pw = document.querySelector('#signup_con_pw').value;
+        var con_pw_validation = document.querySelector('#con_pw_validation')
+
+        if (signup_pw != signup_con_pw) {
+            con_pw_validation.innerHTML = '*Password mismatch';
+            return false;
+        }
+    }
+</script>
+-->
+{% endblock %}

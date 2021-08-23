@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid hero identifyObserver d-flex align-items-end justify-content-center shadow-lg">
+    <div class="text-center" id="herotext">
+        <h1 class="display-4 mt-0 mb-0" id="heroh1">{{city | upper}}</h1>
+    </div>
+</div>
+<div class="container text-center">
+    <h3 class="searchResults">Showing results for {{typeForm}}</h3>
+</div>
+{% set count = [0] %}
+{%for l in range(local_properties | length)%}
+{% if local_properties[l] %}
+<h3 class="street_heading mb-3">{{local_properties[l][0].locality}}
+    &nbsp; <span class="badge badge-info sub-texts-locality">Locality</span></h3>{% endif %}
+<div class="container d-flex shadow-lg testiCon1 mb-2 mt-3" id="property-cards">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            {%for i in range(local_properties[l] | length)%}
+            {% set p_name = local_properties[l][i].property_name %}
+            <div class="swiper-slide swiper-slide2">
+                <form action="/homes" method="post" target="_blank" id="homes-route-form">
+                    <input type="hidden" name="type" value="{{typeForm}}">
+                    <input type="hidden" name="name" value="{{p_name}}">
+                    <input type="hidden" name="p_id" value="{{local_properties[l][i].id}}">
+                    <button id="no-border-button">
+                        <div class="card shadow" id="categories">
+                            <h5 class="card-title">{{p_name}}</h5>
+                            {% if facade[count[0]] %}
+                            <img src="static/images/partners/{{facade[count[0]][0].facade_small_image}}"
+                                class="card-img" alt="...">
+                            {% endif %}
+                            {% if count.append(count.pop() + 1) %}{% endif %} {# increment count by 1 #}
+                            <div class="card-body">
+                                <p class="card-text-ratings"><span class="badge badge-secondary">{{4.3}} <i
+                                            class="fas fa-star"> (Dummy)</i></span></p>
+                                <p class="card-text">Landmark: {{local_properties[l][i].landmark}}</p>
+                                <p class="card-text">Neighbourhood: {{local_properties[l][i].neighbourhood}}</p>
+                            </div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{%endfor%}
+<div class="container m-y-4">
+    <div class="bannerOffer text-center">
+        <p>Get exclusive deals if you sign up now! &nbsp; <i class="fas fa-home"></i> Homify, the America's Fastest
+            Growing Rental Home Chain.
+            <span class="offer mt-0">Sign up now and get 10% more discount
+        </p>
+        </p>
+    </div>
+</div>
+<script>
+    function submitForm(n) {
+        document.getElementById("homes-route-form").submit();
+    }
+</script>
+<script>
+    var changeBG = document.querySelector(".hero");
+    changeBG.style.backgroundImage = "url('static/images/locations_lg/{{cityImg}}')";
+</script>
+{% endblock %}

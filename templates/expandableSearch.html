@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="expandableSearch.css">
+    <title>Expandable</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="searchbarContainer">
+            <div class="searchbar">
+                <div class="searchCstm shadow">
+                    <form action="/results" method="post" target="_blank">
+                        <div class="inputCstm" id="mysearch">
+                            <!-- <input type="text" placeholder="Search" id="mysearch"> -->
+                            <span class="clear" onclick="document.getElementById('mysearch').value ='' ">
+                                <i id="customSearchClose" class="far fa-times-circle"></i>
+                            </span>
+                            <section id="search1">
+                                <div class="dropdown">
+                                    <select class="btn" aria-expanded="false" name="city" required>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <option id="searchfirstOpt" class="dropdown-item" value="" disabled
+                                                selected>
+                                                City/Town
+                                            </option>
+                                            <option class="dropdown-item" value="san jose">San Jose</option>
+                                            <option class="dropdown-item" value="new york">New york</option>
+                                            <option class="dropdown-item" value="miami">Miami</option>
+                                            <option class="dropdown-item" value="houston">Houston</option>
+                                            <option class="dropdown-item" value="san francisco">San Francisco</option>
+                                        </div>
+                                    </select>
+                                </div>
+                            </section>
+                            <section id="search2">
+                                <div class="dropdown">
+                                    <select class="btn" aria-expanded="false" name="type" required>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <option id="searchfirstOpt" class="dropdown-item" value="" disabled
+                                                selected>
+                                                Home
+                                                type
+                                            </option>
+                                            <option class="dropdown-item" value="one_bhk">1 BHK</option>
+                                            <option class="dropdown-item" value="two_bhk">2 BHK</option>
+                                            <option class="dropdown-item" value="three_bhk">3 BHK</option>
+                                            <option class="dropdown-item" value="four_bhk">4 BHK</option>
+                                            <option class="dropdown-item" value="four_plus_bhk">4+ BHK</option>
+                                        </div>
+                                    </select>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="iconCstm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/939c2f26e1.js" crossorigin="anonymous"></script>
+    <script src="expandableSearch.js"></script>
+</body>
+
+</html>

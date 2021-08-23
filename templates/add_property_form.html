@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Patrick+Hand&family=Patrick+Hand+SC&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!--
+        Font usage--
+        font-family: 'Lato', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Patrick Hand', cursive;
+        font-family: 'Patrick Hand SC', cursive;
+        font-family: 'Roboto', sans-serif;
+    -->
+
+    <!--Bootstrap 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--Locals-->
+    <link rel="shortcut icon" href="static/images/logo/faviconIcon.png" type="static/images/logo/png" />
+    <link rel="stylesheet" href="static/dashboard.css">
+    <title>Add property</title>
+</head>
+
+<body class="greyed-BG">
+    <!--Header-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="static/images/logo/homify_logo.png" alt="" width="40" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="/partner_dashboard">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Main Content-->
+    <main>
+        <div class="main-content">
+            <div class="greetings">
+                <div class="container text-center">
+                    <!--<h3 class="greeting-main">It's time to add your property <i class="far fa-smile-beam"></i></h3>-->
+                    <h5 class="greeting-humour">It's gonna take a while. Relax! Grab your favourite drink <i
+                            class="fas fa-coffee"></i>
+                        and take your time.</h5>
+                </div>
+            </div>
+            <div class="container">
+                <form action="/add_property" method="post" class="row g-3 needs-validation box-non-transform shadow"
+                    novalidate enctype="multipart/form-data">
+                    <div class="col-lg-8 col-md-8 col-12">
+                        <label for="validationCustom01" class="form-label">Property name</label>
+                        <input type="text" class="form-control" name="building_name" id="validationCustom01"
+                            autocomplete="off" placeholder="e.g. The westmont appartments" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <label for="validationCustomAge" class="form-label">Property age (in years)</label>
+                        <input type="number" class="form-control" id="validationCustomAge" placeholder="e.g. 5"
+                            name="building_age" required>
+                        <div class="invalid-feedback">
+                            Please provide a number.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label for="validationCustom03" class="form-label">City <span
+                                class="add-on-size-point9em">(currently serving in 7 cities)</span></label>
+                        <select class="form-select" id="validationCustom03" name="city"
+                            onchange="selectCity(this.value)" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="new york">New York</option>
+                            <option value="miami">Miami</option>
+                            <option value="san francisco">San Francisco</option>
+                            <option value="san jose">San Jose</option>
+                            <option value="houston">Houston</option>
+                            <option value="itanagar">Itanagar</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <label for="validationCustom04" class="form-label">State</label>
+                        <select class="form-select" id="validationCustom04" name="state" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="new york">New York</option>
+                            <option value="florida">Florida</option>
+                            <option value="california">California</option>
+                            <option value="texas">Texas</option>
+                            <option value="arunachal pradesh">Arunachal Pradesh</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <label for="validationCustom05" class="form-label">Country</label>
+                        <select class="form-select" id="validationCustom05" name="country" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="usa">USA</option>
+                            <option value="india">India</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <label for="validationCustom06" class="form-label">Zip/Pin code</label>
+                        <input type="number" class="form-control" id="validationCustom06" autocomplete="off" name="zip"
+                            required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label for="validationCustom07" class="form-label">Locality/street</label>
+                        <input type="text" class="form-control" id="validationCustom07" name="locality"
+                            list="localLists" autocomplete="off" required>
+                        <datalist id="localLists"></datalist>
+                        <div class="invalid-feedback">
+                            Please provide a valid locality.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label for="validationCustom08" class="form-label">Landmark</label>
+                        <input type="text" class="form-control" id="validationCustom08" name="landmark"
+                            autocomplete="off" required>
+                        <div class="invalid-feedback">
+                            Please provide a landmark.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-check-label" for="validationCustom09">Neighbourhood</label>
+                        <div class="col-12 radioEdit">
+                            <!--Urban-->
+                            <span>
+                                <input class="form-check-input" type="radio" name="neighbourhood" value="urban"
+                                    id="validationCustom09-1" required>
+                                <label class="form-check-label" for="validationCustom09-1">Urban</label>
+                            </span>
+
+                            <!--Suburb-->
+                            <span class="radioEdit-inputs">
+                                <input class="form-check-input" type="radio" name="neighbourhood" value="suburb"
+                                    id="validationCustom09-2" required>
+                                <label class="form-check-label" for="validationCustom09-2">Suburb</label>
+                                <div class="invalid-feedback">
+                                    You must select one item.
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-label" for="inputGroupFile01">Upload facade image
+                            <span class="sub-text-lowerSize blockAt576">(1 image) :</span>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile01" name="facade" required>
+                            <div class="invalid-feedback">
+                                Please upload one image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-label" for="inputGroupFile02">Upload interior images
+                            <span class="sub-text-lowerSize blockAt576">(4 images) :</span>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02" name="interiors" multiple
+                                required>
+                            <div class="invalid-feedback">
+                                Please upload exactly 4 images
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label for="inputGroupFile03" class="form-label">House No.</label>
+                        <input type="text" class="form-control" id="inputGroupFile03" name="house_number"
+                            autocomplete="off" required>
+                        <div class="invalid-feedback">
+                            Please provide a house number
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-label" for="inputGroupFile04">Upload a day-time audio
+                            <span class="sub-text-lowerSize blockSub">(with windows open | mp3 or wav file) :</span>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile04" name="day_time_audio_open"
+                                required>
+                            <div class="invalid-feedback">
+                                Please upload one audio
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-label" for="inputGroupFile05">Upload a day-time audio
+                            <span class="sub-text-lowerSize blockSub">(with closed windows | mp3 or wav file) :</span>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile05" name="day_time_audio_close"
+                                required>
+                            <div class="invalid-feedback">
+                                Please upload one audio
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <label class="form-label" for="inputGroupFile06">Upload a night-time audio
+                            <span class="sub-text-lowerSize blockSub">(mp3 or wav file) :</span>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile06" name="night_time_audio"
+                                required>
+                            <div class="invalid-feedback">
+                                Please upload one audio
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Types included-->
+                    <div class="col-lg-12 col-md-12 col-12 shadow py-2 sectionForm">
+                        <h5 class="form-check-label" required>Types included
+                            <span class="add-on-size-point8em blockAt576" style="color: red">&nbsp; *required field
+                                -</span>
+                        </h5>
+                        <div class="row radioEdit checkbox-group_bhk">
+                            <!--one-->
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-6 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="bhkType" value="1_BHK"
+                                    id="validationCustom10-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom10-1">1
+                                    BHK</label>
+                                <input type="number" class="form-control halfWidth" id="validationCustom10-2"
+                                    name="total_nos" placeholder="total 1BHK?" min="1" autocomplete="off">
+                                <input type="number" class="form-control halfWidth" id="validationCustom10-3"
+                                    name="priceBHK" placeholder="price in USD" min="1" autocomplete="off">
+                            </div>
+                            <!--two-->
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-6 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="bhkType" value="2_BHK"
+                                    id="validationCustom11-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom11-1">2
+                                    BHK</label>
+                                <input type="number" class="form-control halfWidth" id="validationCustom11-2"
+                                    name="total_nos" placeholder="total 2BHK?" min="1" autocomplete="off">
+                                <input type="number" class="form-control halfWidth" id="validationCustom11-3"
+                                    name="priceBHK" placeholder="price in USD" min="1" autocomplete="off">
+                            </div>
+                            <!--three-->
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-6 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="bhkType" value="3_BHK"
+                                    id="validationCustom12-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom12-1">3
+                                    BHK</label>
+                                <input type="number" class="form-control halfWidth" id="validationCustom12-2"
+                                    name="total_nos" placeholder="total 3BHK?" min="1" autocomplete="off">
+                                <input type="number" class="form-control halfWidth" id="validationCustom12-3"
+                                    name="priceBHK" placeholder="price in USD" min="1" autocomplete="off">
+                            </div>
+                            <!--four-->
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-6 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="bhkType" value="4_BHK"
+                                    id="validationCustom13-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom13-1">4
+                                    BHK</label>
+                                <input type="number" class="form-control halfWidth" id="validationCustom13-2"
+                                    name="total_nos" placeholder="total 4BHK?" min="1" autocomplete="off">
+                                <input type="number" class="form-control halfWidth" id="validationCustom13-3"
+                                    name="priceBHK" placeholder="price in USD" min="1" autocomplete="off">
+                            </div>
+                            <!--four plus-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-8">
+                                <input class="form-check-input" type="checkbox" name="bhkType" value="4_PLUS_BHK"
+                                    value="suburb" id="validationCustom14-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom14-1">4+
+                                    BHK</label>
+                                <input type="number" class="form-control thirtyPWidth" id="validationCustom14-2"
+                                    name="total_nos" placeholder="total 4+BHK?" autocomplete="off">
+                                <input type="number" class="form-control thirtyPWidth" id="validationCustom14-3"
+                                    name="priceBHK" placeholder="price in USD" min="1" autocomplete="off">
+                                <div class="invalid-feedback">
+                                    Select atleast one item.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Homify Categories-->
+                    <div class="col-lg-12 col-md-12 col-12 shadow py-2 sectionForm">
+                        <h5 class="form-check-label" required>Homify Categories
+                            <span class="add-on-size-point8em blockAt576">(Select options your property
+                                satisfies):</span>
+                        </h5>
+                        <div class="row radioEdit checkbox-group_bhk">
+                            <!--Homify Standard-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify standard" id="validationCustom15-1">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-1">Homify
+                                    Standard</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(family apartments)</span>
+                            </div>
+                            <!--Homify Go-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify go" id="validationCustom15-2">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-2">Homify
+                                    Go</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(apartments for
+                                    students)</span>
+                            </div>
+                            <!--homify towers-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify towers" id="validationCustom15-3">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-3">Homify
+                                    Towers</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(more than 10 floors)</span>
+                            </div>
+                            <!--homify stay-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify stay" id="validationCustom15-4">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-4">Homify
+                                    Stay</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(include homestay)</span>
+                            </div>
+                            <!--homify prime-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify prime" id="validationCustom15-5">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-5">Homify
+                                    Prime</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(homify's luxury homes)</span>
+                            </div>
+                            <!--homify cloud-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify cloud" id="validationCustom15-6">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-6">Homify
+                                    Cloud</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(homes in skycrappers)</span>
+                            </div>
+                            <!--homify suburb-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify suburb" id="validationCustom15-7">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-7">Homify
+                                    Suburb</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(homes in outskirt)</span>
+                            </div>
+                            <!--homify classic-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <input class="form-check-input" type="checkbox" name="homify_categories"
+                                    value="homify classic" id="validationCustom15-8">
+                                <label class="form-check-label radioEdit-inputs" for="validationCustom15-8">Homify
+                                    Classic</label>
+                                <span class="sub-text-lowerSize blockMargin text-success">(traditional style
+                                    homes)</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--WHAT'S NEARBY?-->
+
+                    <div class="col-lg-12 col-md-12 col-12 shadow py-2 sectionForm2">
+                        <h5 class="form-check-label">What's nearby?
+                            <span class="sub-text-lowerSize blockAt576">(under 1 KM radius) -</span>
+                        </h5>
+                        <div class="row radioEdit">
+                            <!--malls-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom16">Malls:</label>
+                                <label class="form-check-label" for="validationCustom16-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="malls" value="yes"
+                                    id="validationCustom16-1" required>
+                                <label class="form-check-label" for="validationCustom16-2">No</label>
+                                <input class="form-check-input" type="radio" name="malls" value="no"
+                                    id="validationCustom16-2" required>
+                            </div>
+                            <!--hospitals-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom17">Hospitals:</label>
+                                <label class="form-check-label" for="validationCustom17-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="hospitals" value="yes"
+                                    id="validationCustom17-1" required>
+                                <label class="form-check-label" for="validationCustom17-2">No</label>
+                                <input class="form-check-input" type="radio" name="hospitals" value="no"
+                                    id="validationCustom17-2" required>
+                            </div>
+                            <!--Parks-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom18">Parks:</label>
+                                <label class="form-check-label" for="validationCustom18-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="parks" value="yes"
+                                    id="validationCustom18-1" required>
+                                <label class="form-check-label" for="validationCustom18-2">No</label>
+                                <input class="form-check-input" type="radio" name="parks" value="no"
+                                    id="validationCustom18-2" required>
+                            </div>
+                            <!--Schools-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom19">Schools:</label>
+                                <label class="form-check-label" for="validationCustom19-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="schools" value="yes"
+                                    id="validationCustom19-1" required>
+                                <label class="form-check-label" for="validationCustom19-2">No</label>
+                                <input class="form-check-input" type="radio" name="schools" value="no"
+                                    id="validationCustom19-2" required>
+                            </div>
+                            <!--Colleges-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom20">Colleges:</label>
+                                <label class="form-check-label" for="validationCustom20-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="colleges" value="yes"
+                                    id="validationCustom20-1" required>
+                                <label class="form-check-label" for="validationCustom20-2">No</label>
+                                <input class="form-check-input" type="radio" name="colleges" value="no"
+                                    id="validationCustom20-2" required>
+                            </div>
+                            <!--Universities-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom21">Universities:</label>
+                                <label class="form-check-label" for="validationCustom21-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="universities" value="yes"
+                                    id="validationCustom21-1" required>
+                                <label class="form-check-label" for="validationCustom21-2">No</label>
+                                <input class="form-check-input" type="radio" name="universities" value="no"
+                                    id="validationCustom21-2" required>
+                            </div>
+                            <!--Pharmacies-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom22">Pharmacies:</label>
+                                <label class="form-check-label" for="validationCustom22-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="pharmacies" value="yes"
+                                    id="validationCustom22-1" required>
+                                <label class="form-check-label" for="validationCustom22-2">No</label>
+                                <input class="form-check-input" type="radio" name="pharmacies" value="no"
+                                    id="validationCustom22-2" required>
+                            </div>
+                            <!--Vegetable Markets-->
+                            <div class="col-lg-4 col-md-5 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom23">Vegetable
+                                    shops:</label>
+                                <label class="form-check-label" for="validationCustom23-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="vegetable_shops" value="yes"
+                                    id="validationCustom23-1" required>
+                                <label class="form-check-label" for="validationCustom23-2">No</label>
+                                <input class="form-check-input" type="radio" name="vegetable_shops" value="no"
+                                    id="validationCustom23-2" required>
+                            </div>
+                            <!--Public Transportaion-->
+                            <div class="col-lg-4 col-md-5 col-sm-7 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby sub-text-lowerSizepP95"
+                                    for="validationCustom24">
+                                    Public Transportaions:
+                                </label>
+                                <label class="form-check-label" for="validationCustom24-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="transportations" value="yes"
+                                    id="validationCustom24-1" required>
+                                <label class="form-check-label" for="validationCustom24-2">No</label>
+                                <input class="form-check-input" type="radio" name="transportations" value="no"
+                                    id="validationCustom24-2" required>
+                                <div class="invalid-feedback">
+                                    Please check all of the options in yes or no.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--FEATURES-->
+
+                    <div class="col-lg-12 col-md-12 col-12 shadow py-2 sectionForm2">
+                        <h5 class="form-check-label">Features -</h5>
+                        <div class="row radioEdit">
+                            <!--Parking-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom25">Parking:</label>
+                                <label class="form-check-label" for="validationCustom25-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="parking" value="yes"
+                                    id="validationCustom25-1" required>
+                                <label class="form-check-label" for="validationCustom25-2">No</label>
+                                <input class="form-check-input" type="radio" name="parking" value="no"
+                                    id="validationCustom25-2" required>
+                            </div>
+                            <!--Balcony-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom26">Balcony:</label>
+                                <label class="form-check-label" for="validationCustom26-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="balcony" value="yes"
+                                    id="validationCustom26-1" required>
+                                <label class="form-check-label" for="validationCustom26-2">No</label>
+                                <input class="form-check-input" type="radio" name="balcony" value="no"
+                                    id="validationCustom26-2" required>
+                            </div>
+                            <!--Geyser-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom27">Geyser:</label>
+                                <label class="form-check-label" for="validationCustom27-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="geyser" value="yes"
+                                    id="validationCustom27-1" required>
+                                <label class="form-check-label" for="validationCustom27-2">No</label>
+                                <input class="form-check-input" type="radio" name="geyser" value="no"
+                                    id="validationCustom27-2" required>
+                            </div>
+                            <!--Refrigerator-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby"
+                                    for="validationCustom28">Refrigerator:</label>
+                                <label class="form-check-label" for="validationCustom28-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="refrigerator" value="yes"
+                                    id="validationCustom28-1" required>
+                                <label class="form-check-label" for="validationCustom28-2">No</label>
+                                <input class="form-check-input" type="radio" name="refrigerator" value="no"
+                                    id="validationCustom28-2" required>
+                            </div>
+                            <!--Sofas-->
+                            <div class="col-lg-3 col-md-4 col-sm-7 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom29">
+                                    Sofas:
+                                </label>
+                                <label class="form-check-label" for="validationCustom29-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="sofas" value="yes"
+                                    id="validationCustom29-1" required>
+                                <label class="form-check-label" for="validationCustom29-2">No</label>
+                                <input class="form-check-input" type="radio" name="sofas" value="no"
+                                    id="validationCustom29-2" required>
+                            </div>
+                            <!--Security Guard-->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom30">Security
+                                    Guard:</label>
+                                <label class="form-check-label" for="validationCustom30-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="security_guards" value="yes"
+                                    id="validationCustom30-1" required>
+                                <label class="form-check-label" for="validationCustom30-2">No</label>
+                                <input class="form-check-input" type="radio" name="security_guards" value="no"
+                                    id="validationCustom30-2" required>
+                            </div>
+                            <!--Security Cameras-->
+                            <div class="col-lg-4 col-md-5 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom31">Security
+                                    Cameras:</label>
+                                <label class="form-check-label" for="validationCustom31-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="security_cameras" value="yes"
+                                    id="validationCustom31-1" required>
+                                <label class="form-check-label" for="validationCustom31-2">No</label>
+                                <input class="form-check-input" type="radio" name="security_cameras" value="no"
+                                    id="validationCustom31-2" required>
+                            </div>
+                            <!--Basic furnitures-->
+                            <div class="col-lg-4 col-md-5 col-sm-6 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom32">Basic
+                                    furnitures:</label>
+                                <label class="form-check-label" for="validationCustom32-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="basic_furnitures" value="yes"
+                                    id="validationCustom32-1" required>
+                                <label class="form-check-label" for="validationCustom32-2">No</label>
+                                <input class="form-check-input" type="radio" name="basic_furnitures" value="no"
+                                    id="validationCustom32-2" required>
+                            </div>
+                            <!--Attached bathrooms-->
+                            <div class="col-lg-4 col-md-5 col-sm-7 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom33">Attached
+                                    bathrooms:</label>
+                                <label class="form-check-label" for="validationCustom33-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="attached_bathrooms" value="yes"
+                                    id="validationCustom33-1" required>
+                                <label class="form-check-label" for="validationCustom33-2">No</label>
+                                <input class="form-check-input" type="radio" name="attached_bathrooms" value="no"
+                                    id="validationCustom33-2" required>
+                            </div>
+                            <!--General bathroom-->
+                            <div class="col-lg-4 col-md-5 col-sm-7 col-12 extraMargin-type">
+                                <label class="form-check-label extraMargin-Nearby" for="validationCustom34">
+                                    General bathroom:
+                                </label>
+                                <label class="form-check-label" for="validationCustom34-1">Yes</label>
+                                <input class="form-check-input" type="radio" name="general_bathroom" value="yes"
+                                    id="validationCustom34-1" required>
+                                <label class="form-check-label" for="validationCustom34-2">No</label>
+                                <input class="form-check-input" type="radio" name="general_bathroom" value="no"
+                                    id="validationCustom34-2" required>
+                                <div class="invalid-feedback">
+                                    Please check all of the options in yes or no.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT -->
+    <!--Bootsrap 5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/939c2f26e1.js" crossorigin="anonymous"></script>
+
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!--jQueyCDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!--Locals-->
+    <script src="static/dashboard.js"></script>
+    <script>
+        let dataRecieved = "";
+        function selectCity(city) {
+            dataRecieved = city;
+        }
+
+        let local = document.querySelector("#validationCustom07");
+        /*
+        local.addEventListener('click', function() {
+            document.querySelector('#localLists').innerHTML = "";
+        });
+        */
+
+        local.addEventListener('keyup', function () {
+            $.get('/searchLocality?q=' + local.value + "$" + dataRecieved, function (results) {
+                let html = '';
+                for (let i in results) {
+                    let locality = results[i].locality;
+                    html += '<option>' + locality + '</option>'
+                }
+                document.querySelector('#localLists').innerHTML = html;
+            })
+        })
+    </script>
+</body>
+
+</html>

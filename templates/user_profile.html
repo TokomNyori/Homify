@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="dashboard.css">
+<div class="container-fluid hero-jr identifyObserver d-flex shadow-lg align-items-end justify-content-center">
+    <div class="text-center">
+        <div id="navbrand1" class="navbar-brand user-logo"><i class="far fa-user-circle mr-0" id="logo_main2"></i>
+        </div>
+        <h1 class="display-4 mt-0 mb-0 userProfileNav herotext1" id="heroh1">
+            {{user_details[0].first_name}}&nbsp; {{user_details[0].last_name}}&nbsp; <i style="color: #166CDB;"
+                class="fas fa-check-circle"></i></h1>
+    </div>
+</div>
+
+<div class="main-content1 greyed-BG">
+    <hr>
+    <div class="top-info-section">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-2 col-sm-5 col-12 box box-info shadow">
+                    <div class="box-info-logo">
+                        <div class="box-info-header">
+                            Total Home(s)
+                        </div>
+                        <div class="box-info-detail">
+                            <div class="counter-info">
+                                {{property_count}}
+                            </div>
+                            <i class='bx bx-home'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-12 box box-info shadow">
+                    <div class="box-info-logo">
+                        <div class="box-info-header">
+                            Pending Surveys
+                        </div>
+                        <div class="box-info-detail">
+                            <div class="counter-info">
+                                {{survey_count}}
+                            </div>
+                            <i class='bx bx-notification'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-5 col-12 box box-info shadow">
+                    <div class="box-info-logo">
+                        <div class="box-info-header">
+                            payment dues
+                        </div>
+                        <div class="box-info-detail">
+                            <div class="counter-info">
+                                0
+                            </div>
+                            <i class='bx bx-money'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12 box box-info shadow">
+                    <div class="box-info-logo">
+                        <div class="box-info-header"
+                            style="font-size: 0.9em; margin-bottom: 0.275em; text-transform: lowercase;">
+                            <i class='bx bx-mail-send' style="color: #0652dd;"></i> &nbsp;
+                            {{user_details[0].email_id}}
+                        </div>
+                        <div class="box-info-header" style="font-size: 0.9em; margin-bottom: 0.275em;">
+                            <i class='bx bx-mobile' style="color: #0652dd"></i> &nbsp;
+                            {{user_details[0].isd_code}}&nbsp; {{user_details[0].phone_number}}
+                        </div>
+                        <div class="box-info-header" style="font-size: 0.9em; margin-bottom: 0.275em;">
+                            <i class='bx bxs-user-check' style="color: #0652dd"></i>
+                            {% if user_infos %}
+                            &nbsp; Status: {{user_infos[0].status}}
+                            {% else %}
+                            &nbsp; Status: Null
+                            {% endif %}
+                            <i class='bx bxs-user-detail' style="float: right; font-size: 1.6rem; color: #0652dd"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Table START-->
+
+    <!--Table Homes-->
+    <div class="table-section">
+        <div class="container table-container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 table-box shadow">
+                    <div class="box-info-header">
+                        Your home<span class="sub-text">(s)</span>
+                    </div>
+                    <table class="sticky_header">
+                        <thead>
+                            <tr>
+                                <th class="small-column"></th>
+                                <th>Property ID</th>
+                                <th>Property Name</th>
+                                <th>BHK Type</th>
+                                <th>Neighbourhood</th>
+                                <th>Locality</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Country</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-property">
+                            {%for i in range(user_homes | length) %}
+                            <tr style="text-align: center">
+                                <td class="small-column">
+                                    <form action="/homes" method="post" target="_blank">
+                                        <input type="hidden" name="name" value="{{home_details[i].property_name}}">
+                                        <input type="hidden" name="type" value="{{user_homes[i].type}}">
+                                        <input type="hidden" name="p_id" value="{{home_details[i].id}}">
+                                        <button class="btn"><i class="fas fa-eye text-white"></i> <span
+                                                style="display: block;">View</span></button>
+                                    </form>
+                                </td>
+                                <td>{{home_details[i].p_id}}</td>
+                                <td style="background: {{colors[i]}}; color: #f1faee;">
+                                    {{home_details[i].property_name}}</td>
+                                <td>{{user_homes[i].type}}</td>
+                                <td>{{home_details[i].neighbourhood}}</td>
+                                <td>{{home_details[i].locality}}</td>
+                                <td>{{home_details[i].city}}</td>
+                                <td>{{home_details[i].state}}</td>
+                                <td style="text-transform: uppercase">{{home_details[i].country}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Table Pending Surveys-->
+    <div class="table-section">
+        <div class="container table-container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 table-box shadow">
+                    <div class="box-info-header">
+                        Pending Survey<span class="sub-text">(s)</span>
+                    </div>
+                    <table class="sticky_header">
+                        <thead>
+                            <tr>
+                                <th>Survey Date</th>
+                                <th>Property ID</th>
+                                <th>Property Name</th>
+                                <th>BHK Type</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-property">
+                            {%for i in range(survey_detail | length) %}
+                            <tr style="text-align: center">
+                                <td>{{survey_detail[i].survey_date_txt}}</td>
+                                <td>{{survey_detail[i].id}}</td>
+                                <td>{{survey_detail[i].property_name}}</td>
+                                <td>{{survey_detail[i].type}}</td>
+                                <td>{{survey_detail[i].price}}</td>
+                                <td id="action">
+                                    <form style="display: inline-block;" action="/payment_page_survey" method="POST">
+                                        <input type="hidden" name="u_id" value="{{survey_detail[i].u_id}}">
+                                        <input type="hidden" name="h_id" value="{{survey_detail[i].id}}">
+                                        <input type="hidden" name="h_name" value="{{survey_detail[i].property_name}}">
+                                        <input type="hidden" name="h_type" value="{{survey_detail[i].type}}">
+                                        <input type="hidden" name="price" value={{survey_detail[i].price}}>
+                                        <input type="hidden" name="sl_no" value={{survey_detail[i].sl_no}}>
+                                        <input type="hidden" name="action" value="accept">
+                                        <button type="submit" class="btn btn-success">Accept and pay</button>
+                                    </form>
+                                    &nbsp;
+                                    <form style="display: inline-block;" action="/payment_page_survey" method="POST">
+                                        <input type="hidden" name="u_id" value="{{survey_detail[i].u_id}}">
+                                        <input type="hidden" name="h_id" value="{{survey_detail[i].id}}">
+                                        <input type="hidden" name="h_name" value="{{survey_detail[i].property_name}}">
+                                        <input type="hidden" name="h_type" value="{{survey_detail[i].type}}">
+                                        <input type="hidden" name="price" value={{survey_detail[i].price}}>
+                                        <input type="hidden" name="sl_no" value={{survey_detail[i].sl_no}}>
+                                        <input type="hidden" name="action" value="reject">
+                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var changeBG = document.querySelector(".hero-jr");
+    changeBG.style.backgroundImage = "url('static/images/mix/user_profile2.svg')";
+    var proMV_Nav_BG = document.querySelector("#for_profile_bg");
+
+    // Create a media condition that targets viewports at least 768px wide
+    const mediaQuery = window.matchMedia('(max-width: 576px)')
+
+    // Check if the media query is true
+    if (mediaQuery.matches) {
+        // Then trigger an alert
+        proMV_Nav_BG.style.background = 'rgba(33, 37, 41, 0.5)'
+        proMV_Nav_BG.style.padding = '0.5em'
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Patrick+Hand&family=Patrick+Hand+SC&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!--
+        Font usage--
+        font-family: 'Lato', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Patrick Hand', cursive;
+        font-family: 'Patrick Hand SC', cursive;
+        font-family: 'Roboto', sans-serif;
+    -->
+
+    <!--Bootstrap 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--Locals-->
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/dashboard.css">
+    <link rel="stylesheet" href="static/user_profile.css">
+
+    <link rel="shortcut icon" href="static/images/logo/faviconIcon.png" type="static/images/logo/png" />
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="static/images/logo/homify_logo.png" alt="" width="40" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-light px-sm-0 px-2" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="/partner_dashboard">Home</a>
+                        <a class="nav-link" href="/add_property" target="_blank">Add Property</a>
+                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link right-float" href="logOut_Partner">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Main Content-->
+    <div class="container-fluid hero-jr identifyObserver d-flex shadow-lg align-items-end justify-content-center">
+        <div class="text-center">
+            <div id="navbrand1" class="navbar-brand user-logo"><i class="far fa-user-circle mr-0" id="logo_main2"></i>
+            </div>
+            <h1 class="display-4 mt-0 mb-0 userProfileNav herotext1" id="heroh1">
+                {{first_name}}&nbsp; {{last_name}}&nbsp; <i style="color: #166CDB;" class="fas fa-check-circle"></i>
+            </h1>
+        </div>
+    </div>
+
+    <main id="dash_bg">
+        <hr>
+        <div>
+            <div class="greetings">
+                <div class="container text-center">
+                    <h3 class="greeting-main">Welcome to your dashboard.</h3>
+                    <h5 class="greeting-humour">Everything is up-to-date like the Earth's Rotation!</h5>
+                </div>
+            </div>
+            <div class="top-info-section">
+                <div class="container">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-lg-2 col-md-4 col-sm-5 col-12 box box-info shadow">
+                            <div class="box-info-logo">
+                                <div class="box-info-header">
+                                    Total tenant(s)
+                                </div>
+                                <div class="box-info-detail">
+                                    <div class="counter-info">
+                                        {{tenant_count}}
+                                    </div>
+                                    <i class='bx bx-group'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-12 box box-info shadow">
+                            <div class="box-info-logo">
+                                <div class="box-info-header">
+                                    Total property(s) <span></span>
+                                </div>
+                                <div class="box-info-detail">
+                                    <div class="counter-info">
+                                        {{property_count}}
+                                    </div>
+                                    <i class='bx bx-building-house'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-5 col-12 box box-info shadow">
+                            <div class="box-info-logo">
+                                <div class="box-info-header">
+                                    Pending survey(s)
+                                </div>
+                                <div class="box-info-detail">
+                                    <div class="counter-info">
+                                        {{survey_count}}
+                                    </div>
+                                    <i class='bx bx-notification'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-5 col-12 box box-info shadow" id="add_propertyBtn">
+                            <form action="/add_property" method="get" target="_blank">
+                                <button style="border: none; background: #fff" class="box-info-logo">
+                                    <div class="box-info-header">
+                                        Add Property
+                                    </div>
+                                    <div class="box-info-detail">
+                                        <div class="counter-info">
+                                            <i class='bx bx-building-house'></i>
+                                            <i class='bx bx-plus-circle'></i>
+                                        </div>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!--Charts-->
+                    <div id="chart-row" class="row d-flex justify-content-center align-items-center">
+                        <div class="col-xl-5 col-12 box box-chart shadow" id="category-chart">
+                        </div>
+                        <div class="col-xl-6 col-12 box box-chart shadow" id="customer-chart">
+                        </div>
+                    </div>
+                    <!--Charts ENDS-->
+                </div>
+            </div>
+            <!--Table START-->
+
+            <!--Table Properties-->
+            <div class="table-section">
+                <div class="container table-container">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-12 table-box shadow">
+                            <div class="box-info-header">
+                                Property<span class="sub-text">(s)</span>
+                            </div>
+                            <table class="sticky_header">
+                                <thead>
+                                    <tr>
+                                        <th class="small-column"></th>
+                                        <th>Property ID</th>
+                                        <th>Property Name</th>
+                                        <th>Locality</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Country</th>
+                                        <th>1 BHK</th>
+                                        <th>2 BHK</th>
+                                        <th>3 BHK</th>
+                                        <th>4 BHK</th>
+                                        <th>4+ BHK</th>
+                                        <th>Total 1BHK</th>
+                                        <th>Total 2BHK</th>
+                                        <th>Total 3BHK</th>
+                                        <th>Total 4BHK</th>
+                                        <th>Total 4+BHK</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-property">
+                                    {%for p in range(properties|length)%}
+                                    <tr style="text-align: center">
+                                        <td class="small-column">
+                                            <form action="/homes" method="post" target="_blank">
+                                                <input type="hidden" name="name"
+                                                    value="{{properties[p].property_name}}">
+                                                <input type="hidden" name="type" value="3 BHK">
+                                                <button class="btn"><i class="fas fa-eye text-white"></i> <span
+                                                        style="display: block;">View</span></button>
+                                            </form>
+                                        </td>
+                                        <td>{{properties[p].id}}</td>
+                                        <td style="background: {{colors[p]}}; color: #f1faee;">
+                                            {{properties[p].property_name}}</td>
+                                        <td>{{properties[p].locality}}</td>
+                                        <td>{{properties[p].city}}</td>
+                                        <td>{{properties[p].state}}</td>
+                                        <td style="text-transform: uppercase">{{properties[p].country}}</td>
+                                        <td>{{bhk_types[p][0]['one_BHK']}}</td>
+                                        <td>{{bhk_types[p][0].two_BHK}}</td>
+                                        <td>{{bhk_types[p][0].three_BHK}}</td>
+                                        <td>{{bhk_types[p][0].four_BHK}}</td>
+                                        <td>{{bhk_types[p][0].four_plus_BHK}}</td>
+                                        <td>{{bhk_details[p][0].total_one}}</td>
+                                        <td>{{bhk_details[p][0].total_two}}</td>
+                                        <td>{{bhk_details[p][0].total_three}}</td>
+                                        <td>{{bhk_details[p][0].total_four}}</td>
+                                        <td>{{bhk_details[p][0].total_four_plus}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Table Tenants-->
+            <div class="table-section">
+                <div class="container table-container">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-12 table-box shadow">
+                            <div class="box-info-header">
+                                Tenant<span class="sub-text">(s)</span>
+                            </div>
+                            <table class="sticky_header">
+                                <thead>
+                                    <tr>
+                                        <th>Tenant Id</th>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Tenanted</th>
+                                        <th>Gender</th>
+                                        <th>phone number</th>
+                                        <th>occupation</th>
+                                        <th>home type</th>
+                                        <th>status</th>
+                                        <th>payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-property">
+                                    {%for q in user_details%}
+                                    <tr>
+                                        <td>{{q.u_id}}</td>
+                                        <td class="user_photos"><img src="static/images/users/{{q.image}}" alt=""></td>
+                                        <td>{{q.first_name}} {{q.last_name}}</td>
+                                        <td>
+                                            {{q.tenanted_on_txt}}
+                                            <div class="badges-info badges-color-blueish add-on-size-point8em">
+                                                {{q.property_name}}
+                                            </div>
+                                        </td>
+                                        <td>{{q.gender}}</td>
+                                        <td>{{q.isd_code}}{{q.phone_number}}</td>
+                                        <td>{{q.occupation}}</td>
+                                        <td>
+                                            {% if q.type == '1 BHK' %}
+                                            <span class="badge-color one-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% elif q.type == '2 BHK' %}
+                                            <span class="badge-color two-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% elif q.type == '2 BHK' %}
+                                            <span class="badge-color two-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% elif q.type == '3 BHK' %}
+                                            <span class="badge-color three-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% elif q.type == '4 BHK' %}
+                                            <span class="badge-color four-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% else %}
+                                            <span class="badge-color four-plus-bhk">
+                                                {{q.type}}
+                                            </span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{q.status}}</td>
+                                        <td>
+                                            <div class="payment-status payment-paid">
+                                                <div class="dot"></div>
+                                                <span>clear</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Table Surveys-->
+            <div class="table-section">
+                <div class="container table-container">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-12 table-box shadow">
+                            <div class="box-info-header">
+                                Pending Survey<span class="sub-text">(s)</span>
+                            </div>
+                            <table class="sticky_header">
+                                <thead>
+                                    <tr>
+                                        <th>Survey Date</th>
+                                        <th>Requested by</th>
+                                        <th>Photo</th>
+                                        <th>Phone number</th>
+                                        <th>Ocuupation</th>
+                                        <th>Status</th>
+                                        <th>Requested for</th>
+                                        <th>Type</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-property">
+                                    {%for s in survey_details%}
+                                    <tr>
+                                        <td>{{s.survey_date_txt}}</td>
+                                        <td>{{s.first_name}} {{s.last_name}}</td>
+                                        <td class="user_photos"><img src="static/images/users/{{s.image}}" alt=""></td>
+                                        <td>{{s.isd_code}}{{s.phone_number}}</td>
+                                        <td>{{s.occupation}}</td>
+                                        <td>{{s.status}}</td>
+                                        <td>{{s.property_name}}</td>
+                                        <td>
+                                            {% if s.type == '1 BHK' %}
+                                            <span class="badge-color one-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% elif s.type == '2 BHK' %}
+                                            <span class="badge-color two-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% elif s.type == '2 BHK' %}
+                                            <span class="badge-color two-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% elif s.type == '3 BHK' %}
+                                            <span class="badge-color three-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% elif s.type == '4 BHK' %}
+                                            <span class="badge-color four-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% else %}
+                                            <span class="badge-color four-plus-bhk">
+                                                {{s.type}}
+                                            </span>
+                                            {% endif %}
+                                        </td>
+
+                                        <td id="action">
+                                            <form style="display: inline-block;" action="/payment_page_survey"
+                                                method="POST">
+                                                <input type="hidden" name="u_id" value="{{s.u_id}}">
+                                                <input type="hidden" name="h_id" value="{{s.id}}">
+                                                <input type="hidden" name="h_name" value="{{s.property_name}}">
+                                                <input type="hidden" name="h_type" value="{{s.type}}">
+                                                <input type="hidden" name="price" value={{s.price}}>
+                                                <input type="hidden" name="sl_no" value={{s.sl_no}}>
+                                                <input type="hidden" name="action" value="done">
+                                                <button type="submit" class="btn btn-success">Done</button>
+                                            </form>
+                                            &nbsp;
+                                            <form style="display: inline-block;" action="/payment_page_survey"
+                                                method="POST">
+                                                <input type="hidden" name="u_id" value="{{s.u_id}}">
+                                                <input type="hidden" name="h_id" value="{{s.id}}">
+                                                <input type="hidden" name="h_name" value="{{s.property_name}}">
+                                                <input type="hidden" name="h_type" value="{{s.type}}">
+                                                <input type="hidden" name="price" value={{s.price}}>
+                                                <input type="hidden" name="sl_no" value={{s.sl_no}}>
+                                                <input type="hidden" name="action" value="cancel">
+                                                <button type="submit" class="btn btn-danger">Cancel</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%for i in properties%}
+        <input id="property_names_hidden" type="hidden" value="{{i.property_name}}" name="property_names_hidden">
+        {%endfor%}
+
+        {%for j in user_details%}
+        <input id="datas_hidden" type="hidden" value="{{j.property_name}}" name="datas_hidden">
+        <input id="datas_hidden_type" type="hidden" value="{{j.type}}" name="datas_hidden_type">
+        {% endfor %}
+    </main>
+
+    <footer class="bg-dark text-white text-center py-2 mt-4">
+        <div class="container">
+            <p>
+                Homify<sup><i class="far fa-copyright text-white"></i></sup>
+            </p>
+            <div class="row justify-content-around">
+                <a class="footer_a col-sm-4" href="#">About this project</a>
+                <a class="footer_a col-sm-4" href="#">About me</a>
+                <a class="footer_a col-sm-4" href="#">Contact me</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <!--Bootsrap 5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/939c2f26e1.js" crossorigin="anonymous"></script>
+
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!--Locals-->
+    <script src="static/dashboard.js"></script>
+</body>
+
+</html>
