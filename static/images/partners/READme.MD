@@ -1,0 +1,1 @@
+This folder auto creates folder for each property owners also known as partners when they signup. Inside of each partner's folder, seperate folders will get created automatically for each properties they upload.
