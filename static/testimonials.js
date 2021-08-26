@@ -1,4 +1,4 @@
-var swiper = new Swiper('.swiper-container1', {
+var swiper3 = new Swiper('.swiper-container3', {
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: false,
@@ -10,6 +10,6 @@ var swiper = new Swiper('.swiper-container1', {
         modifier: 1,
         slideShadows: true,
     },
-    loop: true,
+    loop: false,
     freeMode: true,
 });

@@ -1,5 +1,4 @@
-var swiper = new Swiper('.swiper-container2', {
-    effect: 'coverflow',
+var swiper2 = new Swiper('.swiper-container2', {
     grabCursor: true,
     centeredSlides: false,
     slidesPerView: 'auto',
