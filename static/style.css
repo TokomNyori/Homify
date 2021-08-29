@@ -930,11 +930,11 @@ nav .navbar-brand:hover {
 
   #logo_main {
     right: 0.7em;
-    bottom: 0.5em;
+    bottom: 0.35em;
   }
 
   #navColBtn {
-    bottom: 0.55em;
+    bottom: 0.5em;
   }
 
   .searchbar {
@@ -1225,7 +1225,7 @@ nav .navbar-brand:hover {
   }
 
   #logo_main {
-    bottom: 0.1em;
+    bottom: 0.4em;
   }
 
   #navColBtn {
