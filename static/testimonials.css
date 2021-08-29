@@ -8,8 +8,8 @@
 .testiCon {
   display: flex;
   padding: 0;
-  padding: 1em 0.2em;
-  justify-content: center;
+  padding: 1.5em 0.2em;
+  justify-content: start;
   align-items: center;
   border-radius: 1em;
   margin-bottom: 2em;
@@ -22,13 +22,15 @@
 
 .swiper-container1 {
   overflow: hidden;
+  border-radius: 1em;
+  width: 100%;
   /*-webkit-box-reflect: below 1px linear-gradient(transparent 70%, #0009);*/
 }
 
 .swiper-slide1 {
   background-position: center;
   background-size: cover;
-  width: 16em;
+  max-width: 18em;
   margin: 0 0.3em;
   border-radius: 1em;
 }
@@ -82,7 +84,6 @@
 
 .testimonials .card .content .imgBx {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   width: 5em;
   height: 5em;
@@ -110,7 +111,7 @@
 
 @media (max-width: 576px) {
   .swiper-slide1 {
-    width: 15em;
+    max-width: 17em;
     margin: 0 0.1em;
   }
 
