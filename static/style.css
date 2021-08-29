@@ -1,6 +1,6 @@
 body {
   /*padding-top: 3.5em;*/
-  color: red;
+  color: #495057;
   font-family: "Open Sans";
 }
 
@@ -930,7 +930,7 @@ nav .navbar-brand:hover {
 
   #logo_main {
     right: 0.7em;
-    bottom: 0.35em;
+    bottom: 0.4em;
   }
 
   #navColBtn {
