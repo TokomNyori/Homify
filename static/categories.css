@@ -6,8 +6,8 @@
 .testiCon1 {
   display: flex;
   padding: 0;
-  padding-left: 0em;
-  padding-right: 0em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   flex-direction: row;
@@ -64,7 +64,7 @@
   padding: 1em 0.8em;
 }
 
-#categories .card-title{
+#categories .card-title {
   font-size: 1em;
   text-transform: capitalize;
 }
@@ -75,8 +75,8 @@
   background-color: transparent;
   border: none;
   color: inherit;
-  cursor:pointer;
-  outline:none;
+  cursor: pointer;
+  outline: none;
 }
 
 #categories .card-text {
@@ -94,7 +94,6 @@
   padding: 0.3rem 0em 0em 0em;
   margin: 0;
 }
-
 
 #categories .card-body {
   padding-top: 0.1em !important;
@@ -153,7 +152,7 @@
 }
 
 .standard-padding {
-   padding: 1em;
+  padding: 1em;
 }
 
 .standard-border-radius {
@@ -199,7 +198,7 @@
     font-size: 0.8em;
   }
 
-  #categories .card-title{
+  #categories .card-title {
     font-size: 0.83em;
     text-transform: capitalize;
   }
