@@ -30,9 +30,9 @@ DROP = db.execute(
     "DROP TABLE user_surveys")
 '''
 
-
+'''
 deletee = db.execute("DELETE FROM user_details")
-
+'''
 
 '''
 insert = db.execute("INSERT INTO user_homes (u_id, p_id, p_name, type, price) VALUES(?,?,?,?,?)",
