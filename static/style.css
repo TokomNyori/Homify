@@ -29,6 +29,9 @@ hideLists1 ::-webkit-scrollbar {
   position: relative;
   left: 0.2em;
   bottom: 0.2em;
+  width: 8vh;
+  height: 5vh;
+  padding: 0em 0.5em;
 }
 
 #logo_main {
@@ -38,7 +41,6 @@ hideLists1 ::-webkit-scrollbar {
   padding: 0;
   margin: 0;
   right: 1em;
-  top: 0.1em;
 }
 
 #logoCredential {
@@ -928,7 +930,11 @@ nav .navbar-brand:hover {
 
   #logo_main {
     right: 0.7em;
-    top: 0;
+    bottom: 0.35em;
+  }
+
+  #navColBtn {
+    bottom: 0.5em;
   }
 
   .searchbar {
@@ -1216,6 +1222,14 @@ nav .navbar-brand:hover {
     width: 0.75em;
     height: 0.75em;
     margin-bottom: 0.7em;
+  }
+
+  #logo_main {
+    bottom: 0.1em;
+  }
+
+  #navColBtn {
+    bottom: 0.2em;
   }
 }
 
