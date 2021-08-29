@@ -6,8 +6,8 @@
 .testiCon1 {
   display: flex;
   padding: 0;
-  padding-left: 0.4em;
-  padding-right: 0.4em;
+  padding-left: 0em;
+  padding-right: 0em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   flex-direction: row;

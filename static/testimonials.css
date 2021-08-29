@@ -8,7 +8,7 @@
 .testiCon {
   display: flex;
   padding: 0;
-  padding: 1em 0.5em;
+  padding: 1em 0em;
   justify-content: center;
   align-items: center;
   border-radius: 1em;
