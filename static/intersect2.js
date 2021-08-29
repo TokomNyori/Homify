@@ -38,6 +38,8 @@ const observer1 = new IntersectionObserver(function(entries, observer1) {
         else
         {
            navbar1.classList.remove("addNav");
+           navTogglers.classList.remove("navToggler");
+           navHamIcon.classList.remove("navTogglerIcon");
            navColps0.classList.remove("addNavAnchs");
            navColps1.classList.remove("addNavAnchs");
            navColps2.classList.remove("addNavAnchs");
@@ -47,8 +49,7 @@ const observer1 = new IntersectionObserver(function(entries, observer1) {
            hideLists0.classList.remove("hideListsADD");
            hideLists1.classList.remove("hideListsADD");
            hideLists2.classList.remove("hideListsADD");
-           navTogglers.classList.remove("navToggler");
-           navHamIcon.classList.remove("navTogglerIcon");
+          
         };
     });
 } , options1);
