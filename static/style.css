@@ -930,11 +930,11 @@ nav .navbar-brand:hover {
 
   #logo_main {
     right: 0.7em;
-    bottom: 0.35em;
+    bottom: 0.2em;
   }
 
   #navColBtn {
-    bottom: 0.5em;
+    bottom: 0.3em;
   }
 
   .searchbar {
@@ -1222,14 +1222,6 @@ nav .navbar-brand:hover {
     width: 0.75em;
     height: 0.75em;
     margin-bottom: 0.7em;
-  }
-
-  #logo_main {
-    bottom: 0.4em;
-  }
-
-  #navColBtn {
-    bottom: 0.2em;
   }
 }
 
