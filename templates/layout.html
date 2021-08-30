@@ -489,6 +489,20 @@
             //e.preventDefault();
         });
     </script>
+    <script>
+        var Nav_BG = document.querySelector(".navbar-nav");
+
+        // Create a media condition that targets viewports at least 768px wide
+        const mediaQuery = window.matchMedia('(max-width: 576px)')
+
+        // Check if the media query is true
+        if (mediaQuery.matches) {
+            // Then trigger an alert
+            Nav_BG.style.background = 'rgba(33, 37, 41, 0.3)'
+            Nav_BG.style.padding = '0.5em'
+        }
+
+    </script>
 </body>
 
 </html>

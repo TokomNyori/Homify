@@ -728,10 +728,6 @@ nav .navbar-brand:hover {
   transition: background-color 1s ease-in-out;
 }
 
-.addNavAnchs {
-  color: #370617;
-}
-
 .user_nav_profileBtn {
   background: rgba(73, 80, 87, 0.3) !important;
   color: white;
@@ -755,6 +751,10 @@ nav .navbar-brand:hover {
 
 .addNavAnchsBG {
   background: #e9ecef !important;
+}
+
+.addNavAnchs {
+  color: #370617;
 }
 
 .nav_link_description_hover {
