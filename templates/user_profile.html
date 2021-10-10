@@ -114,7 +114,7 @@ Profile
                             {%for i in range(user_homes | length) %}
                             <tr style="text-align: center">
                                 <td class="small-column">
-                                    <form action="/homes" method="post" target="_blank">
+                                    <form action="/homes_users_preview" method="post" target="_blank">
                                         <input type="hidden" name="name" value="{{home_details[i].property_name}}">
                                         <input type="hidden" name="type" value="{{user_homes[i].type}}">
                                         <input type="hidden" name="p_id" value="{{home_details[i].id}}">

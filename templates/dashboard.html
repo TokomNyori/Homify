@@ -185,10 +185,10 @@
                                     {%for p in range(properties|length)%}
                                     <tr style="text-align: center">
                                         <td class="small-column">
-                                            <form action="/homes" method="post" target="_blank">
+                                            <form action="/homes_preview" method="post" target="_blank">
                                                 <input type="hidden" name="name"
                                                     value="{{properties[p].property_name}}">
-                                                <input type="hidden" name="type" value="3 BHK">
+                                                <input type="hidden" name="p_id" value={{properties[p].id}}>
                                                 <button class="btn"><i class="fas fa-eye text-white"></i> <span
                                                         style="display: block;">View</span></button>
                                             </form>

@@ -213,7 +213,99 @@ def homes():
                                    titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios)
 
 
+# Shows you your selected homes
+@application.route("/homes_preview", methods=["GET", "POST"])
+@login_required_partner
+def homes_preview():
+    if request.method == "POST":
+        name = request.form.get("name")
+        p_id = request.form.get("p_id")
+        details = db.execute(
+            "SELECT * FROM properties WHERE id = ?", p_id)
+        facade = db.execute(
+            "SELECT * FROM facade_images WHERE property_id = ?", p_id)
+        interiors = db.execute(
+            "SELECT * FROM interiors WHERE property_id = ?", p_id)
+        bhk_details = db.execute(
+            "SELECT * FROM bhk_details WHERE property_id = ?", p_id)
+        bhk_types = db.execute(
+            "SELECT * FROM bhk_types WHERE property_id = ?", p_id)
+        features = db.execute(
+            "SELECT * FROM features WHERE property_id = ?", p_id)
+        nearby = db.execute(
+            "SELECT * FROM nearby WHERE property_id = ?", p_id)
+        audios = db.execute(
+            "SELECT * FROM property_audios WHERE property_id = ?", p_id)
+
+        print('BHK TYPES------------')
+        types_available = []
+        count_types = 0
+        for i in bhk_types[0].values():
+            if i == 'yes':
+                if count_types == 5:
+                    types_available.append('4+BHK')
+                else:
+                    types_available.append(f'{count_types}BHK')
+            count_types += 1
+
+        current_date = datetime.date.today()
+
+        print('Property ID---')
+        print(p_id)
+        print('$$$$$$$$$$$$$')
+        titlee = {'n': 'homes'}
+        if session.get("user_id") or isinstance(session.get("user_id"), float):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            return render_template('homes_owner.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], details=details, interiors=interiors,
+                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, bhk_details=bhk_details, audios=audios,
+                                   user_details=user_details, types_available=types_available)
+        else:
+            return render_template('homes_owner.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], details=details, interiors=interiors,
+                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, bhk_details=bhk_details, audios=audios)
+
+
+@application.route("/homes_users_preview", methods=["GET", "POST"])
+@login_required
+def homes_users_preview():
+    if request.method == "POST":
+        name = request.form.get("name")
+        h_type = request.form.get("type")
+        p_id = request.form.get("p_id")
+        details = db.execute(
+            "SELECT * FROM properties WHERE id = ?", p_id)
+        facade = db.execute(
+            "SELECT * FROM facade_images WHERE property_id = ?", p_id)
+        interiors = db.execute(
+            "SELECT * FROM interiors WHERE property_id = ?", p_id)
+        bhk_details = db.execute(
+            "SELECT * FROM bhk_details WHERE property_id = ?", p_id)
+        features = db.execute(
+            "SELECT * FROM features WHERE property_id = ?", p_id)
+        nearby = db.execute(
+            "SELECT * FROM nearby WHERE property_id = ?", p_id)
+        audios = db.execute(
+            "SELECT * FROM property_audios WHERE property_id = ?", p_id)
+
+        current_date = datetime.date.today()
+
+        print('Property ID---')
+        print(p_id)
+        print('$$$$$$$$$$$$$')
+        titlee = {'n': 'homes'}
+        if session.get("user_id") or isinstance(session.get("user_id"), float):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            return render_template('homes_users.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
+                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, bhk_details=bhk_details, audios=audios,
+                                   user_details=user_details)
+        else:
+            return render_template('homes_users.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
+                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, bhk_details=bhk_details, audios=audios)
+
 # Sign Up for Partners
+
+
 @application.route("/signUpPartner", methods=["GET", "POST"])
 def signUpPartner():
 

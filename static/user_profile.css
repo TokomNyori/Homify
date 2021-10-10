@@ -308,6 +308,12 @@ tbody .small-column {
   }
 }
 
+@media (max-width: 768px) {
+  .bhktypes_owners {
+    font-size: 0.8em;
+  }
+}
+
 @media (max-width: 576px) {
   .user-logo {
     font-size: 4em;
@@ -321,6 +327,10 @@ tbody .small-column {
     width: 8rem;
     margin: 0;
     font-size: 0.8rem;
+  }
+
+  audio {
+    width: 100%;
   }
 }
 
