@@ -645,6 +645,27 @@ select {
   margin-bottom: 2em;
 }
 
+.hero-jr-contact {
+  background: url("images/about_me/undraw_contact.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 36vh;
+  height: 60vh;
+  margin-bottom: 2em;
+}
+
+
+.hero-jr-project {
+  background: url("images/about_me/cs50_cover.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 36vh;
+  height: 60vh;
+  margin-bottom: 2em;
+}
+
 nav {
   background-color: rgba(52, 58, 64, 0.3);
   padding-bottom: 0em !important;
@@ -703,11 +724,6 @@ nav button {
 
 .hideListsADD {
   color: #370617;
-}
-
-nav .navbar-brand:hover {
-  transform: scale(1.2);
-  color: #fff;
 }
 
 /*
@@ -924,7 +940,6 @@ nav .navbar-brand:hover {
 }
 
 @media (max-width: 576px) {
-
   #logo_about_me {
     max-width: 16vh;
     max-height: 16vh;
