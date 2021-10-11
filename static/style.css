@@ -67,6 +67,14 @@ hideLists1 ::-webkit-scrollbar {
   transition: all 1s ease;
 }
 
+#logo_about_me {
+  max-width: 22vh;
+  max-height: 22vh;
+  position: relative;
+  top: 0.01em;
+  transition: all 1s ease;
+}
+
 #navbrand1 {
   color: #fff;
   display: block;
@@ -916,6 +924,12 @@ nav .navbar-brand:hover {
 }
 
 @media (max-width: 576px) {
+
+  #logo_about_me {
+    max-width: 16vh;
+    max-height: 16vh;
+  }
+
   #fluidy {
     width: 100%;
     position: relative;

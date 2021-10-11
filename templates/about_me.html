@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+About me
+{% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="dashboard.css">
+<div class="container-fluid hero-jr identifyObserver d-flex shadow-lg align-items-end justify-content-center">
+    <div class="text-center">
+        <div id="navbrand1" class="navbar-brand user-logo"><img src="static/images/about_me/profile.jpg"
+                id="logo_about_me"></div>
+        <h1 class="display-4 mt-0 mb-0 userProfileNav herotext1" id="heroh1">
+            Tokom&nbsp; Nyori&nbsp; <i style="color: #166CDB;" class="fas fa-check-circle"></i></h1>
+    </div>
+</div>
+<div class="main-content1 greyed-BG">
+    <div class="container" style="background: white; padding: 1em; border-radius: 1em;">
+        Hello! Tokom here! I belong to a small town located in the Northeastern part of India. I have a bachelor's
+        degree in Economics.
+        I have always been curious about technology (computer science especially). Thanks to cs50 for allowing me to
+        learn Computer Science in a fun and challenging way. Before taking cs50, I had little to no knowledge about
+        programming, so literally, cs50 is my first Computer Science course. Currently, I'm learning discrete
+        mathematics and mathematical thinking in computer science to enhance my knowledge of computer science. As I've
+        already completed the cs50 course, I'm looking further to take cs50's Intro to Artificial Intelligence course to
+        deep dive into the domain of computer science. One day I will like to develop meaningful tools to help societies
+        across the globe by combining my knowledge of Economics, mathematics, and computer science. Whatever advanced
+        courses I may take in the future, my heart will always stay connected with cs50. I'll do my best to stay
+        connected with the cs50 community on social media to help solve the problems of new students. I will always
+        remain thankful to David, Brain, Dough, and the cs50 team.
+        <div class="thankyou">
+            <img src="static/images/about_me/cs501.jpg" alt="">
+        </div>
+
+    </div>
+</div>
+{% endblock %}

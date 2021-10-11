@@ -1389,5 +1389,16 @@ def payment():
         return render_template('thanks.html')
 
 
+@application.route("/footer")
+def footer():
+    titlee = {'n': 'about me'}
+    if session.get("user_id") or isinstance(session.get("user_id"), float):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            return render_template('about_me.html', titlee=titlee, user_details=user_details)
+    else:
+        return render_template('about_me.html', titlee=titlee)
+
+
 if __name__ == '__main__':
     application.run(debug=False, use_debugger=True, use_reloader=True)
