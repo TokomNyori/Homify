@@ -361,9 +361,14 @@ tbody .small-column {
 }
 
 @media (max-width: 576px) {
+  .snip img{
+    width: 80%;
+  }
+
   .user-logo {
     font-size: 4em;
   }
+
   th,
   td {
     max-width: 13rem;

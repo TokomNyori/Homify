@@ -655,9 +655,8 @@ select {
   margin-bottom: 2em;
 }
 
-
 .hero-jr-project {
-  background: url("images/about_me/cs50_cover.jpg");
+  background: url("images/about_me/homify_cover.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

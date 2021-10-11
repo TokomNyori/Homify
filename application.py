@@ -1,7 +1,8 @@
 import os
 import datetime
-from re import split
+from re import L, split
 from typing import Type
+from flask.scaffold import F
 import pytz
 from cs50 import SQL
 from flask import Flask, jsonify, flash, redirect, render_template, request, session, url_for
@@ -80,21 +81,76 @@ def index():
 def explore():
     if request.method == "POST":
         city = request.form.get("city")
-        streets = db.execute(
-            "SELECT DISTINCT street FROM buildings WHERE city = ?", city)
+        typeForm = request.form.get("type")
+        locality = db.execute(
+            "SELECT DISTINCT locality FROM properties WHERE city = ?", city)
+        local_properties = {}
+        facade = {}
 
-        # house_type = request.form.get("type")
-        street1 = db.execute(
-            "SELECT * FROM buildings WHERE city = ? AND street = ?", city, streets[0]['street'])
-        street2 = db.execute(
-            "SELECT * FROM buildings WHERE city = ? AND street = ?", city, streets[1]['street'])
-        street3 = db.execute(
-            "SELECT * FROM buildings WHERE city = ? AND street = ?", city, streets[2]['street'])
+        lenLocal = len(locality)
+        print('Localities:')
+        print(locality)
+
+        count = 0
+        count1 = 0
+        for i in locality:
+            local_properties[count] = db.execute(
+                f"SELECT * FROM properties JOIN bhk_types ON properties.id = bhk_types.property_id WHERE city = ? AND locality = ?", city, i['locality'])
+
+            for j in local_properties[count]:
+                facade[count1] = db.execute(
+                    "SELECT facade_small_image FROM facade_images WHERE property_id = ?", j['id'])
+                count1 += 1
+            count += 1
+
+        bhk_types = {}
+        counter = 0
+        print('Properties according localities-----')
+        for i in range(len(local_properties)):
+            for j in range(5):
+                bhk_types[counter] = db.execute(
+                    "SELECT * FROM bhk_types WHERE property_id = ?", local_properties[i][j]['property_id'])
+
+                counter += 1
+
+        # print(bhk_types[29][0]['property_id'])
+
+        print('BHK TYPES------------')
+
+        types_available = []
+
+        count_types = 0
+        for g in range(len(bhk_types)):
+            types_checker = []
+            for i in bhk_types[g][0].values():
+                if i == 'yes':
+                    if count_types == 5:
+                        types_checker.append('4+ BHK')
+                    else:
+                        types_checker.append(f'{count_types} BHK')
+                count_types += 1
+            types_available.append(types_checker)
+            count_types = 0
+
+            print('-------------------------')
+
+        for m in types_available[0]:
+            print(m)
+            print('-----------------------')
+        print(len(local_properties))
+
+        titlee = {'n': 'results'}
         cityImg = db.execute(
             "SELECT photo FROM locations WHERE city = ?", city)
 
-        titlee = {'n': 'explore'}
-        return render_template('explore.html', street1=street1, street2=street2, street3=street3, city=city, titlee=titlee, cityImg=cityImg[0]['photo'], streets=streets)
+        if session.get("user_id") or isinstance(session.get("user_id"), float):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            return render_template('explore.html', local_properties=local_properties, facade=facade, cityImg=cityImg[0]['photo'], city=city,
+                                   titlee=titlee, user_details=user_details, types_available=types_available)
+        else:
+            return render_template('explore.html', local_properties=local_properties, facade=facade, cityImg=cityImg[0]['photo'], city=city,
+                                   titlee=titlee, types_available=types_available)
 
 
 # Shows your customized search results
@@ -1393,9 +1449,9 @@ def payment():
 def footer():
     titlee = {'n': 'about me'}
     if session.get("user_id") or isinstance(session.get("user_id"), float):
-            user_details = db.execute(
-                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
-            return render_template('about_me.html', titlee=titlee, user_details=user_details)
+        user_details = db.execute(
+            "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+        return render_template('about_me.html', titlee=titlee, user_details=user_details)
     else:
         return render_template('about_me.html', titlee=titlee)
 
@@ -1404,21 +1460,23 @@ def footer():
 def contact():
     titlee = {'n': 'about me'}
     if session.get("user_id") or isinstance(session.get("user_id"), float):
-            user_details = db.execute(
-                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
-            return render_template('contact.html', titlee=titlee, user_details=user_details)
+        user_details = db.execute(
+            "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+        return render_template('contact.html', titlee=titlee, user_details=user_details)
     else:
         return render_template('contact.html', titlee=titlee)
+
 
 @application.route("/about_project")
 def about_project():
     titlee = {'n': 'about project'}
     if session.get("user_id") or isinstance(session.get("user_id"), float):
-            user_details = db.execute(
-                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
-            return render_template('about_project.html', titlee=titlee, user_details=user_details)
+        user_details = db.execute(
+            "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+        return render_template('about_project.html', titlee=titlee, user_details=user_details)
     else:
-        return render_template('about_project.html', titlee=titlee)        
+        return render_template('about_project.html', titlee=titlee)
+
 
 if __name__ == '__main__':
     application.run(debug=False, use_debugger=True, use_reloader=True)
