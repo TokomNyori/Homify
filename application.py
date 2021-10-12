@@ -227,6 +227,8 @@ def homes():
             "SELECT * FROM facade_images WHERE property_id = ?", p_id)
         interiors = db.execute(
             "SELECT * FROM interiors WHERE property_id = ?", p_id)
+        bhk_types = db.execute(
+            "SELECT * FROM bhk_types WHERE property_id = ?", p_id)
         bhk_details = db.execute(
             "SELECT * FROM bhk_details WHERE property_id = ?", p_id)
         features = db.execute(
@@ -235,6 +237,19 @@ def homes():
             "SELECT * FROM nearby WHERE property_id = ?", p_id)
         audios = db.execute(
             "SELECT * FROM property_audios WHERE property_id = ?", p_id)
+
+        print('BHK TYPES HOME------------')
+        types_available = []
+        count_types = 0
+        for i in bhk_types[0].values():
+            if i == 'yes':
+                if count_types == 5:
+                    types_available.append('4+ BHK')
+                else:
+                    types_available.append(f'{count_types} BHK')
+            count_types += 1
+
+        print(types_available)
 
         current_date = datetime.date.today()
         print('CHECKING TYPE---')
@@ -263,10 +278,11 @@ def homes():
                 "SELECT * FROM users WHERE id = ?", session.get("user_id"))
             return render_template('homes.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
                                    titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios,
-                                   user_details=user_details)
+                                   user_details=user_details, types_available=types_available)
         else:
             return render_template('homes.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
-                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios)
+                                   titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios,
+                                   types_available=types_available)
 
 
 # Shows you your selected homes

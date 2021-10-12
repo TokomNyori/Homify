@@ -32,11 +32,9 @@ Homes
           name="type" onchange="cc(this.value)" required>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <option class="dropdown-item" value="" disabled selected>Change Type?</option>
-            <option class="dropdown-item" value="1 BHK">1 BHK</option>
-            <option class="dropdown-item" value="2 BHK">2 BHK</option>
-            <option class="dropdown-item" value="3 BHK">3 BHK</option>
-            <option class="dropdown-item" value="4 BHK">4 BHK</option>
-            <option class="dropdown-item" value="4+ BHK">4+ BHK</option>
+            {% for ty in types_available %}
+            <option class="dropdown-item" value="{{ty}}">{{ty}}</option>
+            {% endfor %}
           </div>
         </select>
       </div>
@@ -197,14 +195,15 @@ Homes
         <li>Monthly fee (1st Month): ${{monthly}}</li>
         {% set security = bhk_details[0][price_bhk] * 2 %}
         <li>Security deposit: ${{security}}</li>
+        {% set actual_price = security + monthly %}
+        <li>Total: ${{actual_price | int}}</li>
         {% set coupon = (security + monthly) / 10 * 4%}
         <li><span class="badge bg-danger text-white" style="font-size: 0.7em">HOMIFY JOY</span> coupon applied <span
             style="font-size: 0.75em">(40% OFF)</span></li>
         <li>You save: ${{coupon | int }} </li>
       </ul>
-      {% set actual_price = security + monthly %}
       {% set total = security + monthly - coupon %}
-      <h5 style="padding-left: 1.2em"><span style="font-weight: bold">Total:</span>
+      <h5 style="padding-left: 1.2em"><span style="font-weight: bold">Order Total:</span>
         <span style="text-decoration-line: line-through;">${{actual_price | int}}</span>&nbsp; ${{total | int }}
       </h5>
       <p class="text-success">Powered and secured by <span
