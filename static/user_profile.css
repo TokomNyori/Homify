@@ -41,6 +41,10 @@
   transform: scale(1.03);
 }
 
+#chart-row .box:hover {
+  transform: none;
+}
+
 .box-info-header {
   font-size: 1.2em;
   margin-bottom: 0.5em;
@@ -367,6 +371,10 @@ tbody .small-column {
 
   .box {
     margin: 0.3em;
+  }
+
+  #chart-row .box {
+    margin: 0.7em;
   }
 
   .snip img {
