@@ -1,7 +1,7 @@
 {% extends "layoutOne.html" %}
 
 {% block title %}
-Index
+Process
 {% endblock %}
 
 {% block main %}
@@ -25,7 +25,7 @@ Index
         </div>
         <div class="col-6 form-group">
             <label for="occupation" class="form-label">Occupation</label>
-            <input type="tel" class="form-control shadow-sm" id="occupation" name="occupation"
+            <input type="text" class="form-control shadow-sm" id="occupation" name="occupation"
                 aria-describedby="card_exp" placeholder="Programmer" required>
         </div>
         <div class="col-6 form-group">
@@ -57,11 +57,11 @@ Index
         </div>
         <!--city-->
         <div class="col-6 form-group">
-            <input type="tel" class="form-control shadow-sm" id="city" aria-describedby="city" placeholder="City"
+            <input type="text" class="form-control shadow-sm" id="city" aria-describedby="city" placeholder="City"
                 name="city">
         </div>
         <div class="col-6 form-group">
-            <input type="tel" class="form-control shadow-sm" id="state" aria-describedby="state" placeholder="State"
+            <input type="text" class="form-control shadow-sm" id="state" aria-describedby="state" placeholder="State"
                 name="state">
         </div>
         <input type="hidden" value="{{sessionID}}" name="session_id">
