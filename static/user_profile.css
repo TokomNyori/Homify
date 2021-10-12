@@ -188,7 +188,7 @@ td {
   padding: 1em;
   border-bottom: 0.5px solid rgba(230, 232, 235, 1);
   text-transform: capitalize;
-  max-width: 13rem;
+  min-width: 10em;
   text-align: center;
 }
 
@@ -285,7 +285,7 @@ tbody .small-column {
   border-radius: 1em;
 }
 
-.snip img{
+.snip img {
   display: block;
   text-align: center;
   width: 60%;
@@ -294,7 +294,7 @@ tbody .small-column {
   border-radius: 1em;
 }
 
-.snip2 img{
+.snip2 img {
   display: block;
   text-align: center;
   width: 80%;
@@ -344,7 +344,7 @@ tbody .small-column {
 
   th,
   td {
-    min-width: 9rem;
+    min-width: 9em;
   }
 
   #tbody-property #action button {
@@ -361,7 +361,15 @@ tbody .small-column {
 }
 
 @media (max-width: 576px) {
-  .snip img{
+  .box-info-header {
+    margin-bottom: 0.2em;
+  }
+
+  .box {
+    margin: 0.3em;
+  }
+
+  .snip img {
     width: 80%;
   }
 
@@ -371,7 +379,7 @@ tbody .small-column {
 
   th,
   td {
-    max-width: 13rem;
+    max-width: 13em;
   }
 
   #tbody-property #action button {

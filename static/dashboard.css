@@ -345,6 +345,14 @@ tbody .small-column {
 }
 
 @media (max-width: 576px) {
+  .box-info-header {
+    margin-bottom: 0.2em;
+  }
+
+  .box {
+    margin: 0.3em;
+  }
+
   .halfWidth {
     width: 90%;
     margin-top: 0.3em;
@@ -357,16 +365,6 @@ tbody .small-column {
     margin-top: 0.3em;
     border-radius: 0.3em;
     text-align: center;
-  }
-
-  .box {
-    margin: 0.4rem;
-  }
-
-  #dash_bg {
-    background: url("images/banners/goals.svg") !important;
-    background-position: top;
-    background-size: cover;
   }
 
   .greetings {

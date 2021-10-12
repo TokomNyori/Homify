@@ -3,7 +3,7 @@
 const user = document.querySelectorAll('#credentialUser2');
 user.forEach((e) => {
     e.addEventListener('click', function() {
-        document.querySelector('#modals_users_payment').style.display = 'flex';
+        document.querySelector('#modals_users_survey').style.display = 'flex';
         let myAudio = document.querySelector('#popup_audio');
         myAudio.play();
     });

@@ -646,9 +646,6 @@ def loginUser():
         query = db.execute(
             "SELECT * FROM users WHERE phone_number = ? OR email_id = ?", user_id, user_id)
 
-        print('QUERY LENGTH:')
-        print(len(query))
-
         if len(query) != 1:
             return jsonify("*User id doesn't exist")
         elif not check_password_hash(query[0]['hash'], user_password):

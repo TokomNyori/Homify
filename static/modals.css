@@ -102,7 +102,7 @@ body {
   font-size: 1.4em;
 }
 
-.modals-body p{
+.modals-body p {
   font-size: 1.1em;
 }
 
@@ -132,7 +132,6 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
-
 
 @keyframes modalopen {
   from {
@@ -174,12 +173,11 @@ body {
 }
 
 @media (max-width: 576px) {
-
-  .modals-header h5{
+  .modals-header h5 {
     font-size: 1.2em;
   }
 
-  .modals-body p{
+  .modals-body p {
     font-size: 1em;
   }
 
