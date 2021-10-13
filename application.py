@@ -272,17 +272,18 @@ def homes():
         print('Property ID---')
         print(p_id)
         print('$$$$$$$$$$$$$')
+        Money = bhk_details[0][price_bhk]
         titlee = {'n': 'homes'}
         if session.get("user_id") or isinstance(session.get("user_id"), float):
             user_details = db.execute(
                 "SELECT * FROM users WHERE id = ?", session.get("user_id"))
             return render_template('homes.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
                                    titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios,
-                                   user_details=user_details, types_available=types_available)
+                                   user_details=user_details, types_available=types_available, Money=Money)
         else:
             return render_template('homes.html', p_id=p_id, name=name, facade=facade[0]['facade_large_image'], h_type=h_type, details=details, interiors=interiors,
                                    titlee=titlee, current_date=current_date, features=features, nearby=nearby, price_bhk=price_bhk, bhk_details=bhk_details, audios=audios,
-                                   types_available=types_available)
+                                   types_available=types_available, Money=Money)
 
 
 # Shows you your selected homes
@@ -1219,6 +1220,9 @@ def purchase_process():
         h_name = splitQ[4]
         survey_dt = datetime.datetime.now()
 
+        if h_type == '4  BHK':
+            h_type = '4+ BHK'
+
         if mode == 'survey':
             surveyDate = splitQ[5]
             print('SVDATE 5------')
@@ -1489,6 +1493,32 @@ def about_project():
         return render_template('about_project.html', titlee=titlee, user_details=user_details)
     else:
         return render_template('about_project.html', titlee=titlee)
+
+
+@application.route("/price_checker")
+def price_checker():
+    query = request.args.get('q')
+    splitQ = query.split('$')
+    id = int(splitQ[0])
+    type = splitQ[1]
+    print(id)
+    print(type)
+
+    if type == '1 BHK':
+        type = 'pricing_one'
+    elif type == '2 BHK':
+        type = 'pricing_two'
+    elif type == '3 BHK':
+        type = 'pricing_three'
+    elif type == '4 BHK':
+        type = 'pricing_four'
+    else:
+        type = 'pricing_four_plus'
+
+    price = db.execute(
+        f"SELECT {type} FROM bhk_details WHERE property_id = ?", id)
+
+    return jsonify(price[0][type])
 
 
 if __name__ == '__main__':

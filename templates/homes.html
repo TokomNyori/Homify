@@ -24,12 +24,13 @@ Homes
 <div class="container shadow homeFont py-2 standard-border-radius lato-font" id="homeSelected1">
   <div class="row justify-content-start text-left">
     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
-      <h3 id="changeType">Type: {{h_type}}</h3>
+      <h4 id="changeType">Type: {{h_type}}</h4>
     </div>
     <form class="col-xl-2 col-lg-2 col-md-3 col-sm-12" id="navsearch">
       <div class="dropdown">
+        {% set proID = details[0]['id'] %}
         <select class="btn btn-outline-secondary text-secondary text-sm-1 bg-transparent rounded" aria-expanded="false"
-          name="type" onchange="cc(this.value)" required>
+          name="type" onchange="cc('{{proID}}' + '$' + this.value)" id="selectType1" required>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <option class="dropdown-item" value="" disabled selected>Change Type?</option>
             {% for ty in types_available %}
@@ -190,32 +191,47 @@ Homes
   <div class="row">
     <div class="pricingDetails col-md-6">
       <h4>Pricing details:</h4>
+      <h6 style="padding-left: 1.2em; font-family: 'Montserrat', sans-serif;"><span id="type_changer2">Type:
+          {{h_type}}</span> &nbsp;&nbsp;
+        <span>
+          {% set proID = details[0]['id'] %}
+          <select class="form-select btn btn-outline-secondary bg-transparent text-secondary" aria-expanded="false"
+            name="type" onchange="cc('{{proID}}' + '$' + this.value)" id="selectType2" required>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <option class="dropdown-item" value="" disabled selected>Change Type?</option>
+              {% for ty in types_available %}
+              <option class="dropdown-item" value="{{ty}}">{{ty}}</option>
+              {% endfor %}
+            </div>
+          </select>
+        </span>
+      </h6>
       <ul style="font-size: 1.1em">
+        <input id="bhk_details_price" name="bhk_details_price" type="hidden" value={{bhk_details[0][price_bhk]}}>
         {% set monthly = bhk_details[0][price_bhk] %}
-        <li>Monthly fee (1st Month): ${{monthly}}</li>
+        <li id="monthly"></li>
         {% set security = bhk_details[0][price_bhk] * 2 %}
-        <li>Security deposit: ${{security}}</li>
+        <li id="security"></li>
         {% set actual_price = security + monthly %}
-        <li>Total: ${{actual_price | int}}</li>
+        <li id="total"></li>
         {% set coupon = (security + monthly) / 10 * 4%}
         <li><span class="badge bg-danger text-white" style="font-size: 0.7em">HOMIFY JOY</span> coupon applied <span
             style="font-size: 0.75em">(40% OFF)</span></li>
-        <li>You save: ${{coupon | int }} </li>
+        <li id="coupon"></li>
       </ul>
       {% set total = security + monthly - coupon %}
       <h5 style="padding-left: 1.2em"><span style="font-weight: bold">Order Total:</span>
-        <span style="text-decoration-line: line-through;">${{actual_price | int}}</span>&nbsp; ${{total | int }}
+        <span id="strike" style="text-decoration-line: line-through;"></span>&nbsp;
+        <span id="order_total"></span>
       </h5>
-      <p class="text-success">Powered and secured by <span
-          style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-secondary">Homify</span></p>
       <hr>
     </div>
 
 
     <input id="h_type_value" type="hidden" name="home_type" value="{{h_type}}">
+    <input id="price" type="hidden" name="price" value={{total}}>
     <input id="h_name_value" type="hidden" name="home_name" value="{{name}}">
     <input id="h_id_value" type="hidden" name="home_id" value="{{p_id}}">
-    <input id="price" type="hidden" name="price" value="{{total}}">
 
     {% if session.user_id %}
     <div class="col-md-6" style="padding: 1em;">
@@ -359,21 +375,35 @@ Homes
 
 <!--<script src="static/modals_users_payment.js"></script>-->
 <!--<script src="static/modals_users_survey.js"></script>-->
+<script>
+  var monthly = document.querySelector("#bhk_details_price").value;
+  var security = monthly * 2;
+  var actual_price = parseInt(monthly) + parseInt(security);
+  var coupon = actual_price / 10 * 4;
+  var total = actual_price - coupon;
+  document.querySelector("#monthly").innerHTML = 'Monthly fee (1st Month): $' + monthly;
+  document.querySelector("#security").innerHTML = 'Security deposit: $' + security;
+  document.querySelector("#total").innerHTML = 'Total: $' + actual_price;
+  document.querySelector("#coupon").innerHTML = 'You save: $' + coupon;
+  document.querySelector("#strike").innerHTML = '$' + actual_price;
+  document.querySelector("#order_total").innerHTML = '$' + total;
+
+</script>
 
 <!--User will directed to login/sign up page before redirecting to the purchase process because the user is not logged in-->
 <script>
-
-  var home_type = document.querySelector("#h_type_value").value;
-  var home_id = document.querySelector("#h_id_value").value;
-  var price = document.querySelector("#price").value;
-  var home_name = document.querySelector("#h_name_value").value;
-
   //Handles: User who choosed to book and pay
   var userLogin = document.querySelector("#userLoginForm_payment");
   userLogin.addEventListener("submit", (e) => {
+    var home_type = document.querySelector("#h_type_value").value;
+    var home_id = document.querySelector("#h_id_value").value;
+    var price = document.querySelector("#price").value;
+    var home_name = document.querySelector("#h_name_value").value;
+
     var user_id = document.querySelector("#user_id").value;
     var login_pw = document.querySelector("#login_pw").value;
     var pw_validation = document.querySelector("#pw_validation");
+
     //var action = '';
     e.preventDefault();
 
@@ -398,6 +428,11 @@ Homes
   //Handles: User who choosed to survey and pay later
   var userLogin1 = document.querySelector("#userLoginForm_survey");
   userLogin1.addEventListener("submit", (e) => {
+    var home_type = document.querySelector("#h_type_value").value;
+    var home_id = document.querySelector("#h_id_value").value;
+    var price = document.querySelector("#price").value;
+    var home_name = document.querySelector("#h_name_value").value;
+
     var user_id = document.querySelector("#user_id_sv").value;
     var login_pw = document.querySelector("#login_pw_sv").value;
     var survey = document.querySelector("#survey").value;

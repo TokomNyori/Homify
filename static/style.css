@@ -821,6 +821,13 @@ nav button {
   font-family: "Lato", sans-serif;
 }
 
+#selectType2 {
+  font-size: 0.82em;
+  border-radius: 0.5em;
+  position: relative;
+  bottom: 0.1em;
+}
+
 @media (max-width: 1200px) {
   #CauraselBanners .carousel-item p {
     font-size: 0.65em;
@@ -1352,5 +1359,13 @@ nav button {
 
   .homeFont p {
     font-size: 0.7em;
+  }
+
+  #type_changer2 {
+    font-size: 0.88em;
+  }
+
+  #selectType2 {
+    font-size: 0.68em;
   }
 }
