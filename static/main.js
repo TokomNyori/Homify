@@ -1,7 +1,8 @@
 function cc(name) {
+  document.querySelector('.spinner0').style.display = 'flex';
   
   $.get('/price_checker?q=' + name, function (results) {
-    
+    document.querySelector('.spinner0').style.display = 'none';
     var nameSplit = name.split('$');
     var type = nameSplit[1];
     var monthly = results;
@@ -26,6 +27,4 @@ function cc(name) {
     document.querySelector("#pricePy").value = total;
     document.querySelector("#priceSv").value = total;
   })
-
 }
-//{% set monthly = bhk_details[0][price_bhk] %}
