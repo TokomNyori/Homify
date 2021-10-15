@@ -220,7 +220,7 @@ select {
 
 /*Searchbar Start END*/
 
-/*Spinner START*/
+/*Spinner0 START*/
 .spinner0 {
   display: none;
   justify-content: center;
@@ -242,7 +242,31 @@ select {
   justify-content: center;
   align-items: center;
 }
-/*Spinner END*/
+/*Spinner0 END*/
+
+/*Spinner1 START*/
+.spinner1 {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner1 .spinnersBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 40% !important;
+  z-index: 104;
+}
+
+.spinner1 .spinnersBox #spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*Spinner1 END*/
 
 #homeSelected1 {
   margin-bottom: 2em;

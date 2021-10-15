@@ -1,8 +1,8 @@
 function cc(name) {
-  document.querySelector('.spinner0').style.display = 'flex';
+  document.querySelector('.spinner1').style.display = 'flex';
   
   $.get('/price_checker?q=' + name, function (results) {
-    document.querySelector('.spinner0').style.display = 'none';
+    document.querySelector('.spinner1').style.display = 'none';
     var nameSplit = name.split('$');
     var type = nameSplit[1];
     var monthly = results;
