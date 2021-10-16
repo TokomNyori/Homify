@@ -86,7 +86,28 @@
                             </button>
                             <ul class="dropdown-menu shadow" id="userProLi">
                                 <li><a class="dropdown-item" href="/user_profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li id="user_settings"><a class="dropdown-item">Settings</a>
+                                </li>
+                                <div class="user_settings_hover shadow">
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="email">
+                                            <button>Change email <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="number">
+                                            <button>Change phone number <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="password">
+                                            <button>Change password <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                </div>
                                 <li>
                                     <a class="dropdown-item" href="/logOut_User">Logout</a>
                                 </li>
@@ -160,7 +181,28 @@
                             </button>
                             <ul class="dropdown-menu shadow" id="userProLi">
                                 <li><a class="dropdown-item" href="/user_profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li id="user_settings"><a class="dropdown-item" href="/settings_users"
+                                        target="_blank">Settings</a></li>
+                                <div class="user_settings_hover shadow">
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="email">
+                                            <button>Change email <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="number">
+                                            <button>Change phone number <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/settings_users" method="post" target="_blank">
+                                            <input type="hidden" name="change" value="password">
+                                            <button>Change password <i class="fas fa-cog"></i></button>
+                                        </form>
+                                    </li>
+                                </div>
                                 <li>
                                     <a class="dropdown-item" href="/logOut_User">Logout</a>
                                 </li>

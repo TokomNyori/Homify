@@ -39,6 +39,7 @@
 
     <!--Locals-->
     <link rel="shortcut icon" href="static/images/logo/faviconIcon.png" type="static/images/logo/png" />
+    <link rel="stylesheet" href="static/modalsTrial.css">
     <link rel="stylesheet" href="static/styleOne.css">
 
     <title>{% block title %}{% endblock %}</title>
@@ -48,6 +49,32 @@
     <main class="margin-md">
         {% block main %}{% endblock %}
     </main>
+    <div class="spinner_settings" id="spinner_settings">
+        <div class="spinnersBox">
+            <div id="spinner" class="spinner-border text-secondary" style="width: 3rem; height: 3rem" role="status">
+            </div>
+        </div>
+    </div>
+    <div class="modals" id="modals_users_settings">
+        <div class="signupBoxPartner shadow rounded">
+            <div class="modals-header">
+                <h4 id="user_settings_modal_tick"><i class="fas fa-check-circle text-success"></i></h4>
+                <p class="text-seccondary" style="font-size: 0.7em;" id="success_msg"></p>
+            </div>
+            <div class="user_settings_div">
+                <form class="user_settings_form" action="/" style="display: inline-block;">
+                    <button class="btn form-control bg-primary text-center rounded shadow">
+                        <i class="fas fa-home">&nbsp;<p class="font-size-xsm" style="font-family: lato;">Home</p></i>
+                    </button>
+                </form>
+                <form class="user_settings_form" action="/logOut_User" style="display: inline-block;">
+                    <button class="btn form-control bg-danger text-center rounded shadow">
+                        <i class="fas fa-sign-out-alt">&nbsp;<p class="font-size-xsm" style="font-family: lato;">Logout</p></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!--BootstrAP 5-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

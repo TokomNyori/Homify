@@ -821,6 +821,52 @@ nav button {
   display: block;
 }
 
+.user_settings_hover {
+  display: none;
+  color: #03071e;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 9999;
+  position: absolute;
+  right: 10.5em;
+  top: 2.7em;
+  width: 112%;
+  background: white;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+#user_settings:hover + .user_settings_hover {
+  display: block;
+}
+
+.user_settings_hover:hover {
+  display: block;
+}
+
+.user_settings_hover button {
+  border: none;
+  text-align: start;
+  background: white;
+  color: #03071e;
+  margin-bottom: 0.2em;
+  border-radius: 0.5em;
+  padding: 0.2em;
+  width: 100%;
+  transition: 0.3s all;
+}
+
+.user_settings_hover button i {
+  font-size: 0.7em;
+  color: #343a40;
+}
+
+.user_settings_hover button:hover {
+  background: #1982c4;
+  color: white;
+}
+
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 1);
   box-sizing: border-box;
@@ -850,6 +896,10 @@ nav button {
   border-radius: 0.5em;
   position: relative;
   bottom: 0.1em;
+}
+
+#selectType1 {
+  border-radius: 0.5em !important;
 }
 
 @media (max-width: 1200px) {
@@ -970,6 +1020,22 @@ nav button {
 }
 
 @media (max-width: 576px) {
+  .user_settings_hover {
+    display: none;
+    color: #03071e;
+    font-family: "Lato", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 9999;
+    position: absolute;
+    top: 8.3em;
+    left: 0.1em;
+    width: 60%;
+    background: white;
+    border-radius: 0.5em;
+    padding: 0.5em;
+  }
+
   #logo_about_me {
     max-width: 16vh;
     max-height: 16vh;

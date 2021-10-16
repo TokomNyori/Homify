@@ -30,6 +30,10 @@ body {
   padding: 1em 1em;
 }
 
+.padding-icon {
+  padding: 3em 2em;
+}
+
 .padding-lg {
   padding: 2em 1em;
 }
@@ -137,6 +141,10 @@ body {
   font-size: 0.8em;
 }
 
+.font-size-xsm {
+  font-size: 0.6em;
+}
+
 .fa-cc-visa {
   color: #1a1f71;
 }
@@ -164,6 +172,30 @@ body {
   right: 25%;
   bottom: 8em;
 }
+
+/*Spinner1 START*/
+.spinner_settings {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner_settings .spinnersBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 40% !important;
+  z-index: 104;
+}
+
+.spinner_settings .spinnersBox #spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*Spinner1 END*/
 
 @media (max-width: 992px) {
   .footer-pow {

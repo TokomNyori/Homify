@@ -118,6 +118,26 @@
   font-size: 0.95rem;
 }
 
+.user_settings_div form {
+  text-align: center;
+  margin: 1.5em 0.5em;
+}
+
+.user_settings_form button {
+  padding: 2em 1.5em;
+}
+
+.user_settings_form button i {
+  font-size: 1.5em;
+  color: white;
+  position: relative;
+  bottom: 0.7em;
+}
+
+#user_settings_modal_tick{
+  font-size: 1.3em;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;

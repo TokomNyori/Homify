@@ -1521,5 +1521,41 @@ def price_checker():
     return jsonify(price[0][type])
 
 
+@application.route("/settings_users", methods=["GET", "POST"])
+@login_required
+def settings_users():
+    if request.method == "POST":
+        change = request.form.get('change')
+        if session.get("user_id") or isinstance(session.get("user_id"), float):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            if change == 'email':
+                return render_template('settings_users.html', user_details=user_details, settings='email')
+            if change == 'number':
+                return render_template('settings_users.html', user_details=user_details, settings='number')
+            if change == 'password':
+                return render_template('settings_users.html', user_details=user_details, settings='password')
+
+
+@application.route("/validate_user_settings", methods=["GET", "POST"])
+@login_required
+def validate_user_settings():
+    if request.method == "POST":
+        current_email = request.form.get('current_email')
+        new_email = request.form.get('new_email')
+        password = request.form.get('password')
+
+        query = db.execute(
+            "SELECT * FROM users WHERE id = ? AND email_id = ?", session.get("user_id"), current_email)
+
+        if len(query) != 1:
+            return jsonify("*Current email id doesn't exist")
+        elif not check_password_hash(query[0]['hash'], password):
+            return jsonify('*Wrong password')
+        else:
+            print('Redirecting...')
+            return jsonify('Done')
+
+
 if __name__ == '__main__':
     application.run(debug=False, use_debugger=True, use_reloader=True)
