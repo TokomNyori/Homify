@@ -137,6 +137,10 @@ body {
   display: flex;
 }
 
+.width-50-adjustable {
+  width: 50%;
+}
+
 .font-size-sm {
   font-size: 0.8em;
 }
@@ -197,7 +201,19 @@ body {
 }
 /*Spinner1 END*/
 
+@media (max-width: 1200px) {
+  .width-50-adjustable {
+    width: 60%;
+  }
+
+}
+
 @media (max-width: 992px) {
+
+  .width-50-adjustable {
+    width: 80%;
+  }
+
   .footer-pow {
     right: 0;
     bottom: 0;
@@ -210,6 +226,10 @@ body {
 }
 
 @media (max-width: 576px) {
+  .width-50-adjustable {
+    width: 100%;
+  }
+
   .padding-sm-width {
     padding: 1em 0;
   }
