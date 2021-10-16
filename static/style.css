@@ -785,6 +785,31 @@ nav button {
   color: #0077b6;
 }
 
+#userProLi {
+  display: none;
+  list-style: none;
+  color: #03071e;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.05rem;
+  font-size: 1rem;
+  font-weight: 500;
+  z-index: 999;
+  position: absolute;
+  top: 2.7em;
+  width: 100%;
+  background: white;
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+
+.user_nav_profileBtn:hover + #userProLi {
+  display: block;
+}
+
+#userProLi:hover {
+  display: block;
+}
+
 #userProLi a {
   transition: 0.3s all;
 }
@@ -794,33 +819,7 @@ nav button {
   color: white;
 }
 
-.addNavAnchsBG {
-  background: #e9ecef !important;
-}
-
-.addNavAnchs {
-  color: #370617;
-}
-
-.nav_link_description_hover {
-  display: none;
-  color: #03071e;
-  font-family: "Lato", sans-serif;
-  letter-spacing: 0.05rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  z-index: 9999;
-  position: absolute;
-  top: 4em;
-  background: white;
-  border-radius: 0.5em;
-  padding: 0.3em;
-}
-
-.nav-link:hover + .nav_link_description_hover {
-  display: block;
-}
-
+/*Menu User setting*/
 .user_settings_hover {
   display: none;
   color: #03071e;
@@ -829,12 +828,13 @@ nav button {
   font-weight: 500;
   z-index: 9999;
   position: absolute;
-  right: 10.5em;
-  top: 2.7em;
-  width: 112%;
+  right: 8.9em;
+  top: 2.5em;
+  width: 130%;
   background: white;
   border-radius: 0.5em;
-  padding: 0.5em;
+  border-top-right-radius: 0;
+  padding: 0.2em;
 }
 
 #user_settings:hover + .user_settings_hover {
@@ -865,6 +865,33 @@ nav button {
 .user_settings_hover button:hover {
   background: #1982c4;
   color: white;
+}
+
+.addNavAnchsBG {
+  background: #e9ecef !important;
+}
+
+.addNavAnchs {
+  color: #370617;
+}
+
+.nav_link_description_hover {
+  display: none;
+  color: #03071e;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.05rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  z-index: 9999;
+  position: absolute;
+  top: 4em;
+  background: white;
+  border-radius: 0.5em;
+  padding: 0.3em;
+}
+
+.nav-link:hover + .nav_link_description_hover {
+  display: block;
 }
 
 .navbar-toggler {
@@ -1020,6 +1047,12 @@ nav button {
 }
 
 @media (max-width: 576px) {
+  #userProLi {
+    width: 60%;
+    top: 2.8em;
+    border-top-left-radius: 0;
+  }
+
   .user_settings_hover {
     display: none;
     color: #03071e;
@@ -1028,11 +1061,12 @@ nav button {
     font-weight: 500;
     z-index: 9999;
     position: absolute;
-    top: 8.3em;
+    top: 4.8em;
     left: 0.1em;
-    width: 60%;
+    width: 100%;
     background: white;
     border-radius: 0.5em;
+    border-top-left-radius: 0;
     padding: 0.5em;
   }
 
