@@ -1556,6 +1556,12 @@ def validate_user_settings():
             print('Redirecting...')
             return jsonify('Done')
 
+@application.route("/settings_usersI", methods=["GET", "POST"])
+@login_required
+def settings_usersI():
+    return render_template('/thanks.html')
+
+
 
 if __name__ == '__main__':
     application.run(debug=False, use_debugger=True, use_reloader=True)

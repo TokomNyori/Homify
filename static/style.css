@@ -799,6 +799,7 @@ nav button {
   width: 100%;
   background: white;
   border-radius: 0.5em;
+  border-top-left-radius: 0;
   padding: 0.2em;
 }
 
