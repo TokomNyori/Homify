@@ -1,0 +1,83 @@
+{% extends "layoutOne.html" %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block main %}
+<div>
+    <div class="heading-settings text-center" style="margin: 2em;">
+        <h4>Settings</h4>
+    </div>
+
+    <div class="container checkout-form padding-sm-width rounded">
+        <div class="width-50" style="margin:0 auto">
+            {% if settings == 'email' %}
+            <div class="change_user_email">
+                <form id="change_user_email" class="row">
+                    <div class="col=12 form-group">
+                        <label for="current_email" class="form-label">Current Email id</label>
+                        <input type="email" class="form-control shadow-sm" id="current_email"
+                            aria-describedby="emailHelp" name="current_email" required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="new_email" class="form-label">New Email id</label>
+                        <input type="email" class="form-control shadow-sm" id="new_email" aria-describedby="emailHelp"
+                            name="new_email" required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="password" class="form-label">Enter password</label>
+                        <input type="password" class="form-control shadow-sm" id="password" aria-describedby="emailHelp"
+                            name="password" required>
+                    </div>
+                    <input type="hidden" name="setting_name" id="setting_name" value="email">
+                    <div class="col=12 text-center text-danger" style="margin-bottom: -0.5em;" id="warning_message">
+                    </div>
+                    <div class="col=12 form-group">
+                        <button id="confirm_user_settings" class="btn btn-primary">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+            Pillow
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    var change_user_email = document.querySelector("#change_user_email");
+
+    change_user_email.addEventListener("submit", (e) => {
+        document.querySelector('.spinner_settings').style.display = 'flex';
+        var current_email = document.querySelector("#current_email").value;
+        var new_email = document.querySelector("#new_email").value;
+        var password = document.querySelector("#password").value;
+        var setting_name = document.querySelector("#setting_name").value;
+        var warning_message = document.querySelector("#warning_message");
+
+        e.preventDefault();
+
+        $.post(
+            "/validate_user_settings",
+            {
+                current_email: current_email,
+                new_email: new_email,
+                password: password,
+                setting_name: setting_name,
+            },
+
+            function (message) {
+                document.querySelector('.spinner_settings').style.display = 'none';
+                if (message == "Done") {
+                    document.querySelector('#modals_users_settings').style.display = 'flex';
+                    document.querySelector('#success_msg').innerHTML = 'Successfully changed your email id';
+                } else {
+                    warning_message.innerHTML = message;
+                }
+            }
+        );
+        //e.preventDefault();
+    });
+</script>
+{% endblock %}
