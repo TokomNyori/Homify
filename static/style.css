@@ -801,6 +801,7 @@ nav button {
   border-radius: 0.5em;
   border-top-left-radius: 0;
   padding: 0.2em;
+  transition: 0.3s all;
 }
 
 .user_nav_profileBtn:hover + #userProLi {
@@ -836,6 +837,7 @@ nav button {
   border-radius: 0.5em;
   border-top-right-radius: 0;
   padding: 0.2em;
+  transition: 0.3s all;
 }
 
 #user_settings:hover + .user_settings_hover {

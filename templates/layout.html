@@ -553,6 +553,21 @@
         }
 
     </script>
+    <script>
+        document.querySelector('.user_nav_profileBtn').onclick = function () {
+            var ele = document.querySelector('#userProLi');
+            var logic = getComputedStyle(ele);
+            var dplay = logic.display;
+
+            if (dplay == 'none') {
+                document.querySelector('#userProLi').style.display = 'block';
+            }
+            else {
+                document.querySelector('#userProLi').style.display = 'none';
+            }
+
+        };
+    </script>
 </body>
 
 </html>
