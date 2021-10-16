@@ -38,13 +38,62 @@ Settings
                     </div>
                 </form>
             </div>
+            {% elif settings == 'number' %}
+            <div class="change_user_number">
+                <form id="change_user_number" class="row">
+                    <div class="col=12 form-group">
+                        <label for="current_number" class="form-label">Current phone number</label>
+                        <input type="tel" class="form-control shadow-sm" id="current_number"
+                            aria-describedby="emailHelp" name="current_number" required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="new_number" class="form-label">New phone number</label>
+                        <input type="tel" class="form-control shadow-sm" id="new_number" name="new_number" required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="password" class="form-label">Enter password</label>
+                        <input type="password" class="form-control shadow-sm" id="password" aria-describedby="emailHelp"
+                            name="password" required>
+                    </div>
+                    <input type="hidden" name="setting_name" id="setting_name" value="number">
+                    <div class="col=12 text-center text-danger" style="margin-bottom: -0.5em;" id="warning_message">
+                    </div>
+                    <div class="col=12 form-group">
+                        <button id="confirm_user_settings" class="btn btn-primary">Confirm</button>
+                    </div>
+                </form>
+            </div>
             {% else %}
-            Pillow
+            <div class="change_user_password">
+                <form id="change_user_password" class="row">
+                    <div class="col=12 form-group">
+                        <label for="current_password" class="form-label">Current password</label>
+                        <input type="password" class="form-control shadow-sm" id="current_password"
+                            aria-describedby="emailHelp" name="current_password" required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="new_password" class="form-label">New password</label>
+                        <input type="password" class="form-control shadow-sm" id="new_password" name="new_password"
+                            required>
+                    </div>
+                    <div class="col=12 form-group">
+                        <label for="confirm_password" class="form-label">Confirm password</label>
+                        <input type="password" class="form-control shadow-sm" id="confirm_password"
+                            aria-describedby="emailHelp" name="confirm_password" required>
+                    </div>
+                    <input type="hidden" name="setting_name" id="setting_name" value="password">
+                    <div class="col=12 text-center text-danger" style="margin-bottom: -0.5em;" id="warning_message">
+                    </div>
+                    <div class="col=12 form-group">
+                        <button id="confirm_user_settings" class="btn btn-primary">Confirm</button>
+                    </div>
+                </form>
+            </div>
             {% endif %}
         </div>
     </div>
 </div>
-
+{% if settings == 'email' %}
 <script>
     var change_user_email = document.querySelector("#change_user_email");
 
@@ -80,4 +129,77 @@ Settings
         //e.preventDefault();
     });
 </script>
+{% elif settings == 'number' %}
+<script>
+    var change_user_number = document.querySelector("#change_user_number");
+
+    change_user_number.addEventListener("submit", (e) => {
+        document.querySelector('.spinner_settings').style.display = 'flex';
+        var current_number = document.querySelector("#current_number").value;
+        var new_number = document.querySelector("#new_number").value;
+        var password = document.querySelector("#password").value;
+        var setting_name = document.querySelector("#setting_name").value;
+        var warning_message = document.querySelector("#warning_message");
+
+        e.preventDefault();
+
+        $.post(
+            "/validate_user_settings",
+            {
+                current_number: current_number,
+                new_email: new_number,
+                password: password,
+                setting_name: setting_name,
+            },
+
+            function (message) {
+                document.querySelector('.spinner_settings').style.display = 'none';
+                if (message == "Done") {
+                    document.querySelector('#modals_users_settings').style.display = 'flex';
+                    document.querySelector('#success_msg').innerHTML = 'Successfully changed your phone number';
+                } else {
+                    warning_message.innerHTML = message;
+                }
+            }
+        );
+        //e.preventDefault();
+    });
+</script>
+{% else %}
+<script>
+    var change_user_password = document.querySelector("#change_user_password");
+
+    change_user_password.addEventListener("submit", (e) => {
+        document.querySelector('.spinner_settings').style.display = 'flex';
+        var current_password = document.querySelector("#current_password").value;
+        var new_password = document.querySelector("#new_password").value;
+        var confirm_password = document.querySelector("#confirm_password").value;
+        var setting_name = document.querySelector("#setting_name").value;
+        var warning_message = document.querySelector("#warning_message");
+
+        e.preventDefault();
+
+        $.post(
+            "/validate_user_settings",
+            {
+                current_password: current_password,
+                new_password: new_password,
+                confirm_password: confirm_password,
+                setting_name: setting_name,
+            },
+
+            function (message) {
+                document.querySelector('.spinner_settings').style.display = 'none';
+                if (message == "Done") {
+                    document.querySelector('#modals_users_settings').style.display = 'flex';
+                    document.querySelector('#success_msg').innerHTML = 'Successfully changed your password';
+                } else {
+                    warning_message.innerHTML = message;
+                }
+            }
+        );
+        //e.preventDefault();
+    });
+</script>
+{% endif %}
 {% endblock %}

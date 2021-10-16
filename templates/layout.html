@@ -176,14 +176,15 @@
                         </div>
                         <div class="btn-group dropstart nav-link" id="navColps2">
                             <button type="button" class="btn btn dropdown-toggle user_nav_profileBtn"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                aria-expanded="false">
                                 <span class="userProfileNav"><i class="fas fa-user-circle"></i> &nbsp;
                                     {{user_details[0].first_name}}</span>
                             </button>
-                            <ul class="dropdown-menu shadow" id="userProLi">
+                            <ul class="shadow" id="userProLi">
                                 <li><a class="dropdown-item" href="/user_profile">Profile</a></li>
-                                <li id="user_settings"><a class="dropdown-item" href="/settings_users"
-                                        target="_blank">Settings</a></li>
+                                <li id="user_settings">
+                                    <a class="dropdown-item">Settings</a>
+                                </li>
                                 <div class="user_settings_hover shadow">
                                     <li>
                                         <form action="/settings_users" method="post" target="_blank">
@@ -204,7 +205,7 @@
                                         </form>
                                     </li>
                                 </div>
-                                <li>
+                                <li id="user_logout">
                                     <a class="dropdown-item" href="/logOut_User">Logout</a>
                                 </li>
                             </ul>

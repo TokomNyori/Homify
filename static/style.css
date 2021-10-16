@@ -804,10 +804,6 @@ nav button {
   transition: 0.3s all;
 }
 
-.user_nav_profileBtn:hover + #userProLi {
-  display: block;
-}
-
 #userProLi:hover {
   display: block;
 }

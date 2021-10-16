@@ -1541,26 +1541,61 @@ def settings_users():
 @login_required
 def validate_user_settings():
     if request.method == "POST":
-        current_email = request.form.get('current_email')
-        new_email = request.form.get('new_email')
-        password = request.form.get('password')
+        setting_name = request.form.get('setting_name')
 
-        query = db.execute(
-            "SELECT * FROM users WHERE id = ? AND email_id = ?", session.get("user_id"), current_email)
+        if setting_name == 'email':
+            current_email = request.form.get('current_email')
+            new_email = request.form.get('new_email')
+            password = request.form.get('password')
 
-        if len(query) != 1:
-            return jsonify("*Current email id doesn't exist")
-        elif not check_password_hash(query[0]['hash'], password):
-            return jsonify('*Wrong password')
-        else:
-            print('Redirecting...')
-            return jsonify('Done')
+            query = db.execute(
+                "SELECT * FROM users WHERE id = ? AND email_id = ?", session.get("user_id"), current_email)
+
+            if len(query) != 1:
+                return jsonify("*Current email id doesn't exist")
+            elif not check_password_hash(query[0]['hash'], password):
+                return jsonify('*Wrong password')
+            else:
+                print('Redirecting...')
+                return jsonify('Done')
+
+        if setting_name == 'number':
+            current_number = request.form.get('current_number')
+            new_number = request.form.get('new_number')
+            password = request.form.get('password')
+
+            query = db.execute(
+                "SELECT * FROM users WHERE id = ? AND phone_number = ?", session.get("user_id"), current_number)
+
+            if len(query) != 1:
+                return jsonify("*Current phone number doesn't exist")
+            elif not check_password_hash(query[0]['hash'], password):
+                return jsonify('*Wrong password')
+            else:
+                print('Redirecting...')
+                return jsonify('Done')
+
+        if setting_name == 'password':
+            current_password = request.form.get('current_password')
+            new_password = request.form.get('new_password')
+            confirm_password = request.form.get('confirm_password')
+
+            query = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+
+            if not check_password_hash(query[0]['hash'], current_password):
+                return jsonify('*Your current password is wrong')
+            elif new_password != confirm_password:
+                return jsonify('*Password mismatch')
+            else:
+                print('Redirecting...')
+                return jsonify('Done')
+
 
 @application.route("/settings_usersI", methods=["GET", "POST"])
 @login_required
 def settings_usersI():
     return render_template('/thanks.html')
-
 
 
 if __name__ == '__main__':
