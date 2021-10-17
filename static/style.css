@@ -551,6 +551,14 @@ select {
   font-family: "Lato", cursive;
 }
 
+.testimonials_heading {
+  margin-top: 1.5em;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-left: 13%;
+  font-family: "Lato", cursive;
+}
+
 .street_heading .sub-texts-locality {
   font-size: 0.55em !important;
 }
@@ -1023,7 +1031,7 @@ nav button {
     width: 100%;
   }
 
-  .street_heading {
+  .street_heading, .testimonials_heading {
     font-size: 1.6rem;
   }
 
@@ -1215,7 +1223,7 @@ nav button {
     max-height: 38vh;
   }
 
-  .street_heading {
+  .street_heading, .testimonials_heading {
     font-size: 1.4rem;
   }
 
@@ -1279,6 +1287,10 @@ nav button {
     margin-left: 5%;
   }
 
+  .testimonials_heading {
+    margin-left: 5%;
+  }
+
   .street_heading .sub-texts-locality {
     font-size: 0.58em !important;
   }
@@ -1290,7 +1302,7 @@ nav button {
 }
 
 @media (max-width: 468px) {
-  .street_heading {
+  .street_heading, .testimonials_heading {
     font-size: 1.2rem;
   }
 

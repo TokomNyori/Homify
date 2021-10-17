@@ -81,7 +81,7 @@
 
 #categories .card-text {
   font-size: 0.83em;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
   padding: 0.3em 0em 0em 0em;
   margin: 0;
   text-align: left;

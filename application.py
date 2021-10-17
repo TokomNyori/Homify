@@ -1557,6 +1557,8 @@ def validate_user_settings():
                 return jsonify('*Wrong password')
             else:
                 print('Redirecting...')
+                db.execute("UPDATE users SET email_id = ? WHERE id = ?",
+                           new_email, session.get("user_id"))
                 return jsonify('Done')
 
         if setting_name == 'number':
@@ -1573,12 +1575,15 @@ def validate_user_settings():
                 return jsonify('*Wrong password')
             else:
                 print('Redirecting...')
+                db.execute("UPDATE users SET phone_number = ? WHERE id = ?",
+                           new_number, session.get("user_id"))
                 return jsonify('Done')
 
         if setting_name == 'password':
             current_password = request.form.get('current_password')
             new_password = request.form.get('new_password')
             confirm_password = request.form.get('confirm_password')
+            pw_hashed = generate_password_hash(new_password)
 
             query = db.execute(
                 "SELECT * FROM users WHERE id = ?", session.get("user_id"))
@@ -1589,6 +1594,8 @@ def validate_user_settings():
                 return jsonify('*Password mismatch')
             else:
                 print('Redirecting...')
+                db.execute("UPDATE users SET hash = ? WHERE id = ?",
+                           pw_hashed, session.get("user_id"))
                 return jsonify('Done')
 
 
