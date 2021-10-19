@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="static/modalsTrial.css" />
     <link rel="stylesheet" href="loginPartner.css" />
     <link rel="shortcut icon" href="static/images/logo/faviconIcon.png" type="static/images/logo/png" />
+    <link rel="stylesheet" href="static/dashboard.css">
     <link rel="stylesheet" href="static/user_profile.css">
     <link rel="stylesheet" href="/static/style.css" />
 
@@ -72,7 +73,27 @@
                     <div class="navbar-nav">
                         <a class="nav-link" aria-current="page" href="/partner_dashboard">Home</a>
                         <a class="nav-link" href="/add_property" target="_blank">Add Property</a>
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link partner_settings">Settings</a>
+                        <div class="partner_settings_hover shadow">
+                            <li>
+                                <form action="/settings_partners" method="post" target="_blank">
+                                    <input type="hidden" name="change" value="email">
+                                    <button>Change email <i class="fas fa-cog"></i></button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="/settings_partners" method="post" target="_blank">
+                                    <input type="hidden" name="change" value="number">
+                                    <button>Change phone number <i class="fas fa-cog"></i></button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="/settings_partners" method="post" target="_blank">
+                                    <input type="hidden" name="change" value="password">
+                                    <button>Change password <i class="fas fa-cog"></i></button>
+                                </form>
+                            </li>
+                        </div>
                         <a class="nav-link right-float" href="logOut_Partner">Log Out</a>
                     </div>
                 </div>
