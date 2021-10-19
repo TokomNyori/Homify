@@ -1537,6 +1537,22 @@ def settings_users():
                 return render_template('settings_users.html', user_details=user_details, settings='password')
 
 
+@application.route("/settings_partners", methods=["GET", "POST"])
+@login_required_partner
+def settings_partners():
+    if request.method == "POST":
+        change = request.form.get('change')
+        if session.get("user_id") and isinstance(session.get("user_id"), int):
+            user_details = db.execute(
+                "SELECT * FROM users WHERE id = ?", session.get("user_id"))
+            if change == 'email':
+                return render_template('settings_partners.html', user_details=user_details, settings='email')
+            if change == 'number':
+                return render_template('settings_partners.html', user_details=user_details, settings='number')
+            if change == 'password':
+                return render_template('settings_partners.html', user_details=user_details, settings='password')
+
+
 @application.route("/validate_user_settings", methods=["GET", "POST"])
 @login_required
 def validate_user_settings():
@@ -1595,6 +1611,73 @@ def validate_user_settings():
             else:
                 print('Redirecting...')
                 db.execute("UPDATE users SET hash = ? WHERE id = ?",
+                           pw_hashed, session.get("user_id"))
+                return jsonify('Done')
+
+
+@application.route("/validate_partner_settings", methods=["GET", "POST"])
+@login_required_partner
+def validate_partner_settings():
+    if request.method == "POST":
+        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeemmmmm')
+        setting_name = request.form.get('setting_name')
+
+        if setting_name == 'email':
+            current_email = request.form.get('current_email')
+            new_email = request.form.get('new_email')
+            password = request.form.get('password')
+
+            print('ttttttttttttyyyyyyyyyytttttttttttttttt')
+
+            query = db.execute(
+                "SELECT * FROM partners WHERE id = ? AND email_id = ?", session.get("user_id"), current_email)
+
+            print('PPPPPPAAAAAAARRRTTTTNNNNEEEERRRRRR')
+
+            if len(query) != 1:
+                return jsonify("*Current email id doesn't exist")
+            elif not check_password_hash(query[0]['hash'], password):
+                return jsonify('*Wrong password')
+            else:
+                print('Redirecting...')
+                db.execute("UPDATE partners SET email_id = ? WHERE id = ?",
+                           new_email, session.get("user_id"))
+                return jsonify('Done')
+
+        if setting_name == 'number':
+            current_number = request.form.get('current_number')
+            new_number = request.form.get('new_number')
+            password = request.form.get('password')
+
+            query = db.execute(
+                "SELECT * FROM partners WHERE id = ? AND phone_number = ?", session.get("user_id"), current_number)
+
+            if len(query) != 1:
+                return jsonify("*Current phone number doesn't exist")
+            elif not check_password_hash(query[0]['hash'], password):
+                return jsonify('*Wrong password')
+            else:
+                print('Redirecting...')
+                db.execute("UPDATE partners SET phone_number = ? WHERE id = ?",
+                           new_number, session.get("user_id"))
+                return jsonify('Done')
+
+        if setting_name == 'password':
+            current_password = request.form.get('current_password')
+            new_password = request.form.get('new_password')
+            confirm_password = request.form.get('confirm_password')
+            pw_hashed = generate_password_hash(new_password)
+
+            query = db.execute(
+                "SELECT * FROM partners WHERE id = ?", session.get("user_id"))
+
+            if not check_password_hash(query[0]['hash'], current_password):
+                return jsonify('*Your current password is wrong')
+            elif new_password != confirm_password:
+                return jsonify('*Password mismatch')
+            else:
+                print('Redirecting...')
+                db.execute("UPDATE partners SET hash = ? WHERE id = ?",
                            pw_hashed, session.get("user_id"))
                 return jsonify('Done')
 

@@ -316,7 +316,60 @@ tbody .small-column {
   transform: scaleY(3) scaleX(3.5);
 }
 
+/*Menu User setting*/
+.partner_settings_hover {
+  display: none;
+  color: #03071e;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 9999;
+  position: absolute;
+  top: 2.5em;
+  left: 17em;
+  background: white;
+  border-radius: 0.5em;
+  border-top-left-radius: 0;
+  padding: 0.2em;
+  transition: 0.3s all;
+}
+
+.partner_settings:hover + .partner_settings_hover {
+  display: block;
+}
+
+.partner_settings_hover:hover {
+  display: block;
+}
+
+.partner_settings_hover button {
+  border: none;
+  text-align: start;
+  background: white;
+  color: #03071e;
+  margin-bottom: 0.2em;
+  border-radius: 0.5em;
+  padding: 0.2em;
+  width: 100%;
+  transition: 0.3s all;
+}
+
+.partner_settings_hover button i {
+  font-size: 0.7em;
+  color: #343a40;
+}
+
+.partner_settings_hover button:hover {
+  background: #1982c4;
+  color: white;
+}
+
 @media (max-width: 992px) {
+  .partner_settings_hover {
+    top: 11.5em;
+    left: 1em;
+  }
+
   .halfWidth {
     width: 100%;
     margin-top: 0.2em;
