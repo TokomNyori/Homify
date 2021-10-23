@@ -33,8 +33,8 @@ hideLists1 ::-webkit-scrollbar {
 }
 
 #logo_main {
-  max-width: 7.5vh;
-  max-height: 7.5vh;
+  max-width: 7.2vh;
+  max-height: 7.2vh;
   position: relative;
   padding: 0;
   margin: 0;
@@ -834,9 +834,9 @@ nav button {
   font-weight: 500;
   z-index: 9999;
   position: absolute;
-  right: 8.9em;
+  right: 8.5em;
   top: 2.5em;
-  width: 130%;
+  width: 140%;
   background: white;
   border-radius: 0.5em;
   border-top-right-radius: 0;
@@ -1007,6 +1007,23 @@ nav button {
 }
 
 @media (max-width: 768px) {
+  .user_settings_hover {
+    display: none;
+    color: #03071e;
+    font-family: "Lato", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 9999;
+    position: absolute;
+    top: 4.8em;
+    left: 0.1em;
+    width: 100%;
+    background: white;
+    border-radius: 0.5em;
+    border-top-left-radius: 0;
+    padding: 0.5em;
+  }
+
   .hero {
     height: 60vh;
     max-height: 60vh;
@@ -1031,7 +1048,8 @@ nav button {
     width: 100%;
   }
 
-  .street_heading, .testimonials_heading {
+  .street_heading,
+  .testimonials_heading {
     font-size: 1.6rem;
   }
 
@@ -1223,7 +1241,8 @@ nav button {
     max-height: 38vh;
   }
 
-  .street_heading, .testimonials_heading {
+  .street_heading,
+  .testimonials_heading {
     font-size: 1.4rem;
   }
 
@@ -1302,7 +1321,8 @@ nav button {
 }
 
 @media (max-width: 468px) {
-  .street_heading, .testimonials_heading {
+  .street_heading,
+  .testimonials_heading {
     font-size: 1.2rem;
   }
 
