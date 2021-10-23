@@ -1619,7 +1619,6 @@ def validate_user_settings():
 @login_required_partner
 def validate_partner_settings():
     if request.method == "POST":
-        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeemmmmm')
         setting_name = request.form.get('setting_name')
 
         if setting_name == 'email':
@@ -1627,12 +1626,8 @@ def validate_partner_settings():
             new_email = request.form.get('new_email')
             password = request.form.get('password')
 
-            print('ttttttttttttyyyyyyyyyytttttttttttttttt')
-
             query = db.execute(
                 "SELECT * FROM partners WHERE id = ? AND email_id = ?", session.get("user_id"), current_email)
-
-            print('PPPPPPAAAAAAARRRTTTTNNNNEEEERRRRRR')
 
             if len(query) != 1:
                 return jsonify("*Current email id doesn't exist")
@@ -1682,10 +1677,52 @@ def validate_partner_settings():
                 return jsonify('Done')
 
 
-@application.route("/settings_usersI", methods=["GET", "POST"])
-@login_required
-def settings_usersI():
-    return render_template('/thanks.html')
+@application.route("/change_user_pwd", methods=["GET", "POST"])
+def change_user_pwd():
+    if request.method == 'POST':
+        user_id = request.form.get('user_id')
+        current_password = request.form.get('current_password')
+        new_password = request.form.get('new_password')
+        pw_hashed = generate_password_hash(new_password)
+
+        query = db.execute(
+            "SELECT * FROM users WHERE phone_number = ? OR email_id = ?", user_id, user_id)
+
+        if len(query) != 1:
+            return jsonify("*User id doesn't exist")
+        elif not check_password_hash(query[0]['hash'], current_password):
+            return jsonify('*Wrong password')
+        else:
+            print('Redirecting...')
+            db.execute("UPDATE users SET hash = ? WHERE email_id = ? OR phone_number = ?",
+                       pw_hashed, user_id, user_id)
+            return jsonify('Done')
+
+    return render_template('change_password_users.html')
+
+
+@application.route("/change_partner_pwd", methods=["GET", "POST"])
+def change_partner_pwd():
+    if request.method == 'POST':
+        partner_id = request.form.get('partner_id')
+        current_password = request.form.get('current_password')
+        new_password = request.form.get('new_password')
+        pw_hashed = generate_password_hash(new_password)
+
+        query = db.execute(
+            "SELECT * FROM partners WHERE phone_number = ? OR email_id = ?", partner_id, partner_id)
+
+        if len(query) != 1:
+            return jsonify("*User id doesn't exist")
+        elif not check_password_hash(query[0]['hash'], current_password):
+            return jsonify('*Wrong password')
+        else:
+            print('Redirecting...')
+            db.execute("UPDATE partners SET hash = ? WHERE email_id = ? OR phone_number = ?",
+                       pw_hashed, partner_id, partner_id)
+            return jsonify('Done')
+
+    return render_template('change_password_partners.html')
 
 
 if __name__ == '__main__':
