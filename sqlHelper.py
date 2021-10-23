@@ -31,7 +31,7 @@ DROP = db.execute(
 '''
 
 '''
-deletee = db.execute("DELETE FROM locations WHERE id = ?", 2)
+deletee = db.execute("DELETE FROM user_details")
 '''
 
 '''
