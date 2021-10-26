@@ -26,12 +26,11 @@ update = db.execute(
 '''
 
 '''
-DROP = db.execute(
-    "DROP TABLE user_surveys")
+DROP = db.execute("DROP TABLE user_surveys")
 '''
 
 '''
-deletee = db.execute("DELETE FROM user_details")
+deletee = db.execute("DELETE FROM partners WHERE id = 31")
 '''
 
 '''
