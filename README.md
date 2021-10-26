@@ -10,11 +10,11 @@ There are two sections in this web application:
 1. Property Owners-- Property owners can list their properties for rent.
 2. Users-- These are the normal users who are going to search and purchase rental homes.
 
-I've already created many partner accounts, one of them is a partner account for Sir David--
+I've already created many partner accounts, one of them is a partner account for Sir David:
 user id: davidmalan@gmail.com
 password: poiuytre
 
-There is a pre-existing user demo account for Sir David--
+There is a pre-existing user demo account for Sir David:
 user id: davidmalan@gmail.com
 password: dddddddd
 
