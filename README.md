@@ -16,7 +16,7 @@ There is a pre-existing user demo account for Sir David:
 user id- davidmalan@gmail.com  
 password- dddddddd
 
-Todos and info for the prperty owner:
+Todos and info for the property owner:
 
 1. Explore the web aplication
 2. Click on the 'handshake' icon from the navbar and create a partner account and start listing properties (you can just play it around and upload anything)
