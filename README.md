@@ -1,38 +1,35 @@
 # Homify
 
-This is my cs50's final project. cs50 is a Computer Science course (on-campus and online) offered by Harvard University. cs50 is quite popular among CS courses. My project name is "Homify" where users can search for rental homes and homestays. Homify also gives flexibility to property owners to list their properties for rent.
-There are different README.md files in different sections that explains its functionality.
+Welcome to Homify, my final project for CS50, a popular Computer Science course offered by Harvard University. Homify is a web application that allows users to easily search for rental homes and homestays. It also provides property owners with the flexibility to list their properties for rent.
 
-There are two sections in this web application:
+## Sections
 
-1. Property Owners-- Property owners can list their properties for rent.
-2. Users-- These are the normal users who are going to search and purchase rental homes.
+Homify consists of two main sections:
 
-I've already created many partner accounts, one of them is a partner account for Sir David:  
-user id- davidmalan@gmail.com  
-password- poiuytre
+1. For Property Owners: In this section, property owners can create accounts and list their properties for rent. They can manage their listings and get detailed information about their tenants and properties through the partner dashboard.
 
-There is a pre-existing user demo account for Sir David:  
-user id- davidmalan@gmail.com  
-password- dddddddd
+2. For Users: These are regular users who can browse and purchase rental homes. They can create accounts or sign in as guests to make purchases. Once they've made a purchase, they can view the details of the properties they've bought in their user profile.
 
-Todos and info for the property owner:
+## Usage Instructions
 
-1. Explore the web aplication
-2. Click on the 'handshake' icon from the navbar and create a partner account and start listing properties (you can just play it around and upload anything)
-3. Try purchasing your own listed properties
-4. While purchasing, a popup will appear for you to signup/login as a user. Complete the signup/login process and start purschasing...
-5. Go back to your partner account and sign in
-6. The property you've just purchased will be reflected in your dashboard. You'll be able to see it in your dashboard(partner dashboard)
-7. The dashboard is equiped with chart, graph, and tables to give you detail information about your tenants and properties.
+### Property Owners
 
-Todos and info for the users:
+1. Explore the web application to familiarize yourself with its features.
+2. To become a property owner, click on the "handshake" icon in the navigation bar. This will take you to the partner account creation page.
+3. Create a partner account by providing the necessary information. Feel free to test the functionality by uploading sample property listings.
+4. Try purchasing one of your own listed properties to see how the process works.
+5. During the purchase, a popup will appear, prompting you to sign up or log in as a user. Complete the signup/login process to proceed with the purchase.
+6. After completing the purchase, log back into your partner account.
+7. Your recently purchased property will be displayed on your partner dashboard, which provides detailed information about your tenants and properties through charts, graphs, and tables.
 
-1. Explore the web application
-2. You can create a user account from anywhere in the web application by clicking on the 'user' icon from the navbar or you can create while purchasing the property
-3. While purchasing, a popup will appear for you to signup/login as a user if you haven't signed up or signed in already.
-4. Start purchasing some properties...
-5. Visit your profile by clicking on 'your name with a user icon' from the navbar and then select profile from the dropdown to see the details of the properties you've purchased.
-6. log out and log in anytime.
+### Users
 
-Thanks! This is CS50!
+1. Take a tour of the web application to explore its features.
+2. To create a user account, click on the "user" icon in the navigation bar. Alternatively, you can create an account during the property purchase process.
+3. If you haven't signed up or logged in yet, a popup will appear during the purchase, guiding you through the signup/login process.
+4. Start purchasing rental properties according to your preferences.
+5. To view the details of the properties you've purchased, click on your name with the user icon in the navigation bar, then select "profile" from the dropdown menu.
+6. You can log out and log in anytime to manage your account.
+
+Thank you for checking out Homify! 
+This is CS50!
