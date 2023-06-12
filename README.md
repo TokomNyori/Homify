@@ -1,6 +1,6 @@
 # Homify
 
-Welcome to Homify, my final project for CS50, a popular Computer Science course offered by Harvard University. Homify is a web application that allows users to easily search for rental homes and homestays. It also provides property owners with the flexibility to list their properties for rent.
+This is my final project for CS50, which is a Computer Science course offered by Harvard University both on-campus and online. The name of my project is "Homify," and it is a platform that enables users to search for rental homes and homestays. Additionally, Homify provides property owners with the flexibility to list their properties for rent.
 
 ## Sections
 
