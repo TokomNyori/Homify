@@ -8,7 +8,7 @@ Homify consists of two main sections:
 
 1. Property Owners: In this section, property owners can create accounts and list their properties for rent. They can manage their listings and get detailed information about their tenants and properties through the partner dashboard.
 
-2. Users: These are regular users who can browse and purchase rental homes. They can create accounts or sign in as guests to make purchases. Once they've made a purchase, they can view the details of the properties they've bought in their user profile.
+2. Users: These are regular users who can browse and purchase rental homes. They can create accounts or sign in to make purchases. Once they've made a purchase, they can view the details of the properties they've bought in their user profile.
 
 ## Usage Instructions
 
