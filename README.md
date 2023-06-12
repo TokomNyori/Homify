@@ -6,13 +6,13 @@ Welcome to Homify, my final project for CS50, a popular Computer Science course 
 
 Homify consists of two main sections:
 
-1. For Property Owners: In this section, property owners can create accounts and list their properties for rent. They can manage their listings and get detailed information about their tenants and properties through the partner dashboard.
+1. Property Owners: In this section, property owners can create accounts and list their properties for rent. They can manage their listings and get detailed information about their tenants and properties through the partner dashboard.
 
-2. For Users: These are regular users who can browse and purchase rental homes. They can create accounts or sign in as guests to make purchases. Once they've made a purchase, they can view the details of the properties they've bought in their user profile.
+2. Users: These are regular users who can browse and purchase rental homes. They can create accounts or sign in as guests to make purchases. Once they've made a purchase, they can view the details of the properties they've bought in their user profile.
 
 ## Usage Instructions
 
-### Property Owners
+### For Property Owners
 
 1. Explore the web application to familiarize yourself with its features.
 2. To become a property owner, click on the "handshake" icon in the navigation bar. This will take you to the partner account creation page.
@@ -22,7 +22,7 @@ Homify consists of two main sections:
 6. After completing the purchase, log back into your partner account.
 7. Your recently purchased property will be displayed on your partner dashboard, which provides detailed information about your tenants and properties through charts, graphs, and tables.
 
-### Users
+### For Users
 
 1. Take a tour of the web application to explore its features.
 2. To create a user account, click on the "user" icon in the navigation bar. Alternatively, you can create an account during the property purchase process.
